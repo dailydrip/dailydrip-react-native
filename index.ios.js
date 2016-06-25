@@ -8,7 +8,7 @@ import {
 
 import App from './components/App.js';
 
-class DailyDrip extends Component {
+class Project extends Component {
   render() {
     return (
       <View>
@@ -18,4 +18,4 @@ class DailyDrip extends Component {
   }
 }
 
-AppRegistry.registerComponent('DailyDrip', () => DailyDrip);
+AppRegistry.registerComponent('Project', () => Project);

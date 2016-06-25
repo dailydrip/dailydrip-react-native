@@ -1,5 +1,5 @@
 import React, { Component, } from 'react'
-import { View, Text, } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 class TopicScreen extends Component {
 
@@ -14,11 +14,26 @@ class TopicScreen extends Component {
 
   render() {
     return (
-      <View>
-        <Text>Topic Screen</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome to Topic Screen</Text>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});
 
 export default TopicScreen
