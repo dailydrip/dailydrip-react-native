@@ -26,7 +26,7 @@ const TabView = (props, context) => {
     <View style={[styles.container, props.sceneStyle]}>
       <Button onPress={() => { drawer.close(); Actions.mainScreen({type: 'reset'}); }}>Home</Button>
       <Button onPress={() => { drawer.close(); Actions.topicScreen({type: 'reset'}); }}>Topic</Button>
-      <Button onPress={() => { drawer.close(); }}>About us</Button>
+      <Button onPress={() => { drawer.close(); Actions.settingsScreen({type: 'reset'}); }}>Settings</Button>
     </View>
   );
 };
