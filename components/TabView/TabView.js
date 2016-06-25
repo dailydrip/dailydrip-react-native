@@ -26,7 +26,7 @@ const TabView = (props, context) => {
   const drawer = context.drawer;
   const buttons = topicsFromApi;
 
-  let topics = buttons.map((v,i) => <Button key={i}>{v}</Button>);
+  let topics = buttons.map((v,i) => <Button key={i} onPress={() => { drawer.close(); Actions.topicScreen({ topic: v }); }}>{v}</Button>);
 
   return (
     <View style={[styles.container, props.sceneStyle]}>

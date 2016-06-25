@@ -1,5 +1,6 @@
 import React, { Component, } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { Actions } from 'react-native-router-flux';
 
 class TopicScreen extends Component {
 
@@ -15,6 +16,7 @@ class TopicScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>{this.props.topic}</Text>
         <Text style={styles.title}>Welcome to Topic Screen</Text>
       </View>
     )
@@ -24,7 +26,7 @@ class TopicScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 80,
+    marginTop: 90,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    marginTop: 20,
   },
 });
 
