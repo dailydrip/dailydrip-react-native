@@ -2,7 +2,8 @@ import React, { Component, } from 'react'
 import { PropTypes } from 'react';
 import { StyleSheet, Text, View, AsyncStorage, } from 'react-native';
 import Button from 'react-native-button';
-import { Actions } from 'react-native-router-flux';
+import { Actions as RouterActions } from 'react-native-router-flux';
+import { connect } from 'react-redux'
 
 const contextTypes = {
   drawer: React.PropTypes.object,
@@ -20,31 +21,48 @@ const styles = StyleSheet.create({
   },
 });
 
-const topicsFromApi = ["Elixir", "Elm", "Elm Remote Meetup", "HTML+CSS", "Modern Development Practices", "Sidekiq"];
-
 const TabView = (props, context) => {
-  const drawer = context.drawer;
-  const buttons = topicsFromApi;
+  const drawer = context.drawer
+  const buttons = props.topics || []
 
-  var logout = function(){
-    AsyncStorage.clear();
+  let logout = function(){
+    AsyncStorage.clear()
   }
 
-  let topics = buttons.map((v,i) => <Button key={i} onPress={() => { drawer.close(); Actions.topicScreen({ topic: v }); }}>{v}</Button>);
+  let topics = buttons.map((v,i) => {
+    let onButtonPress = () => {
+      drawer.close()
+      RouterActions.topicScreen({ topic: v.title })
+    }
+    return <Button key={i} onPress={onButtonPress}>{v.title}</Button>
+  })
 
   return (
     <View style={[styles.container, props.sceneStyle]}>
-      <Button onPress={() => { drawer.close(); Actions.mainScreen({type: 'reset'}); }}>Home</Button>
-      <Button onPress={() => { drawer.close(); Actions.topicScreen({type: 'reset'}); }}>Topic</Button>
+      <Button onPress={() => { drawer.close(); RouterActions.mainScreen({type: 'reset'}); }}>Home</Button>
+      <Button onPress={() => { drawer.close(); RouterActions.topicScreen({type: 'reset'}); }}>Topic</Button>
       { topics }
-      <Button onPress={() => { drawer.close(); Actions.settingsScreen({type: 'reset'}); }}>Settings</Button>
-      <Button onPress={() => { drawer.close(); logout(); Actions.loginScreen({type: 'reset'}); }}>Logout</Button>
-      
+      <Button onPress={() => { drawer.close(); RouterActions.settingsScreen({type: 'reset'}); }}>Settings</Button>
+      <Button onPress={() => { drawer.close(); logout(); RouterActions.loginScreen({type: 'reset'}); }}>Logout</Button>
+
     </View>
-  );
-};
+  )
+}
 
-TabView.contextTypes = contextTypes;
-TabView.propTypes = propTypes;
+TabView.contextTypes = contextTypes
+TabView.propTypes = propTypes
 
-module.exports = TabView;
+let mapStateToProps = function mapStateToProps(state){
+  console.log(state)
+  return {
+    topics: state.topics
+  }
+}
+
+let mapDispatchToProps = function mapDispatchToProps(dispatch){
+  return {}
+}
+
+let ConnectedTabView = connect(mapStateToProps, mapDispatchToProps)(TabView)
+
+export default ConnectedTabView

@@ -1,9 +1,9 @@
 import React, { Component, } from 'react'
 import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage, } from 'react-native'
 import { Actions } from 'react-native-router-flux';
+import API from '../../api/DailyDripApi';
 
 class LoginScreen extends Component {
-
   constructor(props){
     super(props);
     this.state = {
@@ -17,8 +17,12 @@ class LoginScreen extends Component {
   static defaultProps = {}
 
   handleSubmit(){
-    AsyncStorage.setItem("auth_token", "TOKEN").done();
-    Actions.mainScreen({ type: 'reset'});
+    API.login(this.state.login, this.state.password).then(function(data){
+      AsyncStorage.setItem("auth_token", data.data.token).done();
+      Actions.mainScreen({ type: 'reset'});
+    }).catch(function(err){
+      console.log(err);
+    });
   }
 
    handleChangeLogin(event){
@@ -37,8 +41,10 @@ class LoginScreen extends Component {
     return (<View style={styles.container}>
         <TextInput
           ref="login"
+          autoCapitalize="none"
           style={styles.loginInput}
-          onChange={this.handleChangeLogin.bind(this)} 
+          onChange={this.handleChangeLogin.bind(this)}
+          keyboardType="email-address"
           value={this.state.login} />
 
           <TextInput
@@ -65,7 +71,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
   },
   buttonText: {
     fontSize: 18,
@@ -76,23 +81,19 @@ const styles = StyleSheet.create({
     height: 45,
     flexDirection: 'row',
     backgroundColor: 'white',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 8,
     marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
-    loginInput: {
+  loginInput: {
     height: 50,
     padding: 4,
     marginRight: 5,
     fontSize: 23,
+    color: 'black',
     borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white'
+    borderColor: 'black'
   },
 });
 
