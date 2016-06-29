@@ -25,13 +25,13 @@ class LoginScreen extends Component {
     });
   }
 
-   handleChangeLogin(event){
+  handleChangeLogin(event){
     this.setState({
       login: event.nativeEvent.text
     })
   }
 
-   handleChangePassword(event){
+  handleChangePassword(event){
     this.setState({
       password: event.nativeEvent.text
     })
@@ -39,27 +39,27 @@ class LoginScreen extends Component {
 
   render() {
     return (<View style={styles.container}>
-        <TextInput
-          ref="login"
-          autoCapitalize="none"
-          style={styles.loginInput}
-          onChange={this.handleChangeLogin.bind(this)}
-          keyboardType="email-address"
-          value={this.state.login} />
+      <TextInput
+      ref="login"
+      autoCapitalize="none"
+      style={styles.loginInput}
+      onChange={this.handleChangeLogin.bind(this)}
+      keyboardType="email-address"
+      value={this.state.login} />
 
-          <TextInput
-            ref="password"
-            style={styles.loginInput}
-            secureTextEntry={true}
-            onChange={this.handleChangePassword.bind(this)}
-            value={this.state.password} />
+      <TextInput
+      ref="password"
+      style={styles.loginInput}
+      secureTextEntry={true}
+      onChange={this.handleChangePassword.bind(this)}
+      value={this.state.password} />
 
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="white"
-            onPress={this.handleSubmit.bind(this)}>
-            <Text style={styles.buttonText}> LOGIN </Text>
-          </TouchableHighlight>
+      <TouchableHighlight
+      style={styles.button}
+      underlayColor="white"
+      onPress={this.handleSubmit.bind(this)}>
+      <Text style={styles.buttonText}> LOGIN </Text>
+      </TouchableHighlight>
       </View>
     )
   }

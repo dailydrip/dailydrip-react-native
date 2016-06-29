@@ -16,21 +16,21 @@ class MainScreen extends Component {
     this.props.fetchTopics()
     AsyncStorage.getItem("auth_token")
     .then( (value) =>
-          {
-            if(!value){
-              RouterActions.loginScreen({ type: 'reset' });
-            }
-        }
-    )
-  }
+    {
+      if(!value){
+        RouterActions.loginScreen({ type: 'reset' });
+      }
+    }
+  )
+}
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome to DailyDrip Main Screen</Text>
-      </View>
-    )
-  }
+render() {
+  return (
+    <View style={styles.container}>
+    <Text style={styles.title}>Welcome to DailyDrip Main Screen</Text>
+    </View>
+  )
+}
 }
 
 const styles = StyleSheet.create({
@@ -55,9 +55,9 @@ let mapStateToProps = function mapStateToProps(state){
 let mapDispatchToProps = function mapDispatchToProps(dispatch){
   return {
     fetchTopics: () => {
-        API.getTopics().then((data) => {
-          dispatch(Actions.setTopics(data.data.topics))
-        })
+      API.getTopics().then((data) => {
+        dispatch(Actions.setTopics(data.data.topics))
+      })
     }
   }
 }

@@ -16,8 +16,8 @@ class TopicScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{this.props.topic}</Text>
-        <Text style={styles.title}>Welcome to Topic Screen</Text>
+        <Text style={styles.title}>{this.props.topic.title}</Text>
+        <Text style={styles.title}>{this.props.topic.description}</Text>
       </View>
     )
   }

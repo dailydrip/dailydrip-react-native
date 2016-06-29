@@ -29,12 +29,12 @@ const TabView = (props, context) => {
     AsyncStorage.clear()
   }
 
-  let topics = buttons.map((v,i) => {
+  let topics = buttons.map((topic,i) => {
     let onButtonPress = () => {
       drawer.close()
-      RouterActions.topicScreen({ topic: v.title })
+      RouterActions.topicScreen({ topic })
     }
-    return <Button key={i} onPress={onButtonPress}>{v.title}</Button>
+    return <Button key={i} onPress={onButtonPress}>{topic.title}</Button>
   })
 
   return (
