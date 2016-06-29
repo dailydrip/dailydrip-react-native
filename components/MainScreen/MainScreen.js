@@ -1,11 +1,24 @@
 import React, { Component, } from 'react'
-import { View, Text, StyleSheet, } from 'react-native'
+import { View, Text, StyleSheet, AsyncStorage, } from 'react-native'
+import { Actions } from 'react-native-router-flux';
+
 
 class MainScreen extends Component {
 
   static propTypes = {}
 
   static defaultProps = {}
+
+  componentDidMount(){
+    AsyncStorage.getItem("auth_token")
+    .then( (value) =>
+          {
+            if(!value){
+              Actions.loginScreen({ type: 'reset' });
+            }
+          }
+    )
+  }
 
   render() {
     return (

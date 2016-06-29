@@ -6,6 +6,7 @@ import Drawer from 'react-native-drawer';
 import MainScreen from './MainScreen/MainScreen'
 import TopicScreen from './TopicScreen/TopicScreen'
 import SettingsScreen from './SettingsScreen/SettingsScreen'
+import LoginScreen from './LoginScreen/LoginScreen'
 import TabView from './TabView/TabView'
 
 
@@ -48,6 +49,7 @@ class App extends Component {
   	        <Scene key="mainScreen" component={MainScreen} title="" initial />
             <Scene key="topicScreen" component={TopicScreen} title="" />
             <Scene key="settingsScreen" component={SettingsScreen} title="" />
+            <Scene key="loginScreen" component={LoginScreen} title="" hideNavBar={true} />
   	      </Scene>
         </Scene>
 	    </Router>

@@ -1,6 +1,6 @@
 import React, { Component, } from 'react'
 import { PropTypes } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, } from 'react-native';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 
@@ -26,6 +26,10 @@ const TabView = (props, context) => {
   const drawer = context.drawer;
   const buttons = topicsFromApi;
 
+  var logout = function(){
+    AsyncStorage.clear();
+  }
+
   let topics = buttons.map((v,i) => <Button key={i} onPress={() => { drawer.close(); Actions.topicScreen({ topic: v }); }}>{v}</Button>);
 
   return (
@@ -34,6 +38,7 @@ const TabView = (props, context) => {
       <Button onPress={() => { drawer.close(); Actions.topicScreen({type: 'reset'}); }}>Topic</Button>
       { topics }
       <Button onPress={() => { drawer.close(); Actions.settingsScreen({type: 'reset'}); }}>Settings</Button>
+      <Button onPress={() => { drawer.close(); logout(); Actions.loginScreen({type: 'reset'}); }}>Logout</Button>
       
     </View>
   );
