@@ -1,6 +1,6 @@
 import React, { Component, } from 'react'
 import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage, } from 'react-native'
-import { Actions } from 'react-native-router-flux';
+import { Actions as RouterActions } from 'react-native-router-flux';
 import API from '../../api/DailyDripApi';
 
 class LoginScreen extends Component {
@@ -19,7 +19,7 @@ class LoginScreen extends Component {
   handleSubmit(){
     API.login(this.state.login, this.state.password).then(function(data){
       AsyncStorage.setItem("auth_token", data.data.token).done();
-      Actions.mainScreen({ type: 'reset'});
+      RouterActions.mainScreen({ type: 'reset'});
     }).catch(function(err){
       console.log(err);
     });
@@ -38,28 +38,29 @@ class LoginScreen extends Component {
   }
 
   render() {
-    return (<View style={styles.container}>
-      <TextInput
-        ref="login"
-        autoCapitalize="none"
-        style={styles.loginInput}
-        onChange={this.handleChangeLogin.bind(this)}
-        keyboardType="email-address"
-        value={this.state.login} />
+    return (
+      <View style={styles.container}>
+        <TextInput
+          ref="login"
+          autoCapitalize="none"
+          style={styles.loginInput}
+          onChange={this.handleChangeLogin.bind(this)}
+          keyboardType="email-address"
+          value={this.state.login} />
 
-      <TextInput
-        ref="password"
-        style={styles.loginInput}
-        secureTextEntry={true}
-        onChange={this.handleChangePassword.bind(this)}
-        value={this.state.password} />
+        <TextInput
+          ref="password"
+          style={styles.loginInput}
+          secureTextEntry={true}
+          onChange={this.handleChangePassword.bind(this)}
+          value={this.state.password} />
 
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor="white"
-        onPress={this.handleSubmit.bind(this)}>
-        <Text style={styles.buttonText}> LOGIN </Text>
-      </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="white"
+          onPress={this.handleSubmit.bind(this)}>
+          <Text style={styles.buttonText}> LOGIN </Text>
+        </TouchableHighlight>
       </View>
     )
   }

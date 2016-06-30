@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
 
 const TabView = (props, context) => {
   const drawer = context.drawer
-  const buttons = props.topics || []
+  const topics = props.topics || []
 
   let logout = function(){
-    AsyncStorage.clear()
+    AsyncStorage.clear() // LOL A BIT TOO ZEALOUS
   }
 
-  let topics = buttons.map((topic,i) => {
+  let topicButtons = topics.map((topic,i) => {
     let onButtonPress = () => {
       drawer.close()
       RouterActions.topicScreen({ topic })
@@ -40,11 +40,9 @@ const TabView = (props, context) => {
   return (
     <View style={[styles.container, props.sceneStyle]}>
       <Button onPress={() => { drawer.close(); RouterActions.mainScreen({type: 'reset'}); }}>Home</Button>
-      <Button onPress={() => { drawer.close(); RouterActions.topicScreen({type: 'reset'}); }}>Topic</Button>
-      { topics }
+      { topicButtons }
       <Button onPress={() => { drawer.close(); RouterActions.settingsScreen({type: 'reset'}); }}>Settings</Button>
       <Button onPress={() => { drawer.close(); logout(); RouterActions.loginScreen({type: 'reset'}); }}>Logout</Button>
-
     </View>
   )
 }
@@ -53,7 +51,6 @@ TabView.contextTypes = contextTypes
 TabView.propTypes = propTypes
 
 let mapStateToProps = function mapStateToProps(state){
-  console.log(state)
   return {
     topics: state.topics
   }

@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import Actions from '../../actions'
 import API from '../../api/DailyDripApi'
 
-
 class MainScreen extends Component {
   static propTypes = {}
   static defaultProps = {
@@ -15,22 +14,20 @@ class MainScreen extends Component {
   componentDidMount(){
     this.props.fetchTopics()
     AsyncStorage.getItem("auth_token")
-    .then( (value) =>
-    {
+    .then( (value) => {
       if(!value){
         RouterActions.loginScreen({ type: 'reset' });
       }
-    }
-  )
-}
+    })
+  }
 
-render() {
-  return (
-    <View style={styles.container}>
-    <Text style={styles.title}>Welcome to DailyDrip Main Screen</Text>
-    </View>
-  )
-}
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>DailyDrip Main Screen</Text>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -39,7 +36,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 20,
@@ -48,15 +45,15 @@ const styles = StyleSheet.create({
   },
 });
 
-let mapStateToProps = function mapStateToProps(state){
+let mapStateToProps = (state) =>{
   return {}
 }
 
-let mapDispatchToProps = function mapDispatchToProps(dispatch){
+let mapDispatchToProps = (dispatch) => {
   return {
     fetchTopics: () => {
-      API.getTopics().then((data) => {
-        dispatch(Actions.setTopics(data.data.topics))
+      API.getTopics().then((response) => {
+        dispatch(Actions.setTopics(response.data.topics))
       })
     }
   }

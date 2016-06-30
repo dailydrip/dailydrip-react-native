@@ -1,10 +1,11 @@
 import React, { Component, } from 'react'
 import { View, Text } from 'react-native'
-import { Actions, Router, Scene, DefaultRenderer } from 'react-native-router-flux';
+import { Router, Scene, DefaultRenderer } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 
 import MainScreen from './MainScreen/MainScreen'
 import TopicScreen from './TopicScreen/TopicScreen'
+import DripScreen from './DripScreen/DripScreen'
 import SettingsScreen from './SettingsScreen/SettingsScreen'
 import LoginScreen from './LoginScreen/LoginScreen'
 import TabView from './TabView/TabView'
@@ -48,6 +49,7 @@ class App extends Component {
   	      <Scene key="root">
   	        <Scene key="mainScreen" component={MainScreen} title="" initial />
             <Scene key="topicScreen" component={TopicScreen} title="" />
+            <Scene key="dripScreen" component={DripScreen} title="" />
             <Scene key="settingsScreen" component={SettingsScreen} title="" />
             <Scene key="loginScreen" component={LoginScreen} title="" hideNavBar={true} />
   	      </Scene>
