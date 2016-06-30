@@ -5,17 +5,24 @@ import {
   Text,
   View
 } from 'react-native';
-
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import reducers from './reducers'
+import createLogger from 'redux-logger'
 import App from './components/App.js';
 
-class DailyDrip extends Component {
+const logger = createLogger()
+const createStoreWithMiddleware = applyMiddleware(logger)(createStore)
+let store = createStoreWithMiddleware(reducers)
+
+class Project extends Component {
   render() {
     return (
-      <View>
+      <Provider store={store}>
         <App />
-      </View>
+      </Provider>
     );
   }
 }
 
-AppRegistry.registerComponent('DailyDrip', () => DailyDrip);
+AppRegistry.registerComponent('Project', () => Project);

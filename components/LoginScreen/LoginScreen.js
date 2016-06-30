@@ -40,25 +40,25 @@ class LoginScreen extends Component {
   render() {
     return (<View style={styles.container}>
       <TextInput
-      ref="login"
-      autoCapitalize="none"
-      style={styles.loginInput}
-      onChange={this.handleChangeLogin.bind(this)}
-      keyboardType="email-address"
-      value={this.state.login} />
+        ref="login"
+        autoCapitalize="none"
+        style={styles.loginInput}
+        onChange={this.handleChangeLogin.bind(this)}
+        keyboardType="email-address"
+        value={this.state.login} />
 
       <TextInput
-      ref="password"
-      style={styles.loginInput}
-      secureTextEntry={true}
-      onChange={this.handleChangePassword.bind(this)}
-      value={this.state.password} />
+        ref="password"
+        style={styles.loginInput}
+        secureTextEntry={true}
+        onChange={this.handleChangePassword.bind(this)}
+        value={this.state.password} />
 
       <TouchableHighlight
-      style={styles.button}
-      underlayColor="white"
-      onPress={this.handleSubmit.bind(this)}>
-      <Text style={styles.buttonText}> LOGIN </Text>
+        style={styles.button}
+        underlayColor="white"
+        onPress={this.handleSubmit.bind(this)}>
+        <Text style={styles.buttonText}> LOGIN </Text>
       </TouchableHighlight>
       </View>
     )
@@ -67,8 +67,7 @@ class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 80,
-    justifyContent: 'center',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -88,10 +87,12 @@ const styles = StyleSheet.create({
   },
   loginInput: {
     height: 50,
+    width: 300,
     padding: 4,
     marginRight: 5,
     fontSize: 23,
     color: 'black',
+    alignSelf: 'center',
     borderWidth: 1,
     borderColor: 'black'
   },
