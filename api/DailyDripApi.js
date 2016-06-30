@@ -30,6 +30,10 @@ let DailyDrip = {
   getTopics: function getTopics(){
     let topicsUrl = `${BASE_URL}/topics`
     return authedInstance().then((instance) => { return instance.get(topicsUrl) } )
+  },
+  getDrips: function getDrips(topic_id){
+    let dripsUrl = `${BASE_URL}/topics/${topic_id}/drips`
+    return authedInstance().then((instance) => { return instance.get(dripsUrl) } )
   }
 }
 

@@ -5,8 +5,16 @@ const setTopics = (topics) => {
   }
 }
 
+const setDrips = (drips) => {
+  return {
+    type: "FETCH_DRIPS",
+    drips
+  }
+}
+
 const Actions = {
-  setTopics: setTopics
+  setTopics,
+  setDrips
 }
 
 export default Actions
