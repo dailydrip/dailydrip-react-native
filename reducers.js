@@ -18,9 +18,21 @@ let drips = (state=[], action) => {
   }
 }
 
+let drip = (state={}, action) => {
+  switch (action.type) {
+    case 'SET_DRIP':
+      return action.drip
+    default:
+      return {
+        title: "Some drip yo"
+      }
+  }
+}
+
 let reducers = combineReducers({
   topics,
-  drips
+  drips,
+  drip
 })
 
 export default reducers

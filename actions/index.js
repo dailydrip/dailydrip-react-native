@@ -12,9 +12,17 @@ const setDrips = (drips) => {
   }
 }
 
+const setDrip = (drip) => {
+  return {
+    type: "SET_DRIP",
+    drip
+  }
+}
+
 const Actions = {
   setTopics,
-  setDrips
+  setDrips,
+  setDrip
 }
 
 export default Actions

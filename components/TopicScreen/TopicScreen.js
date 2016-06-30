@@ -2,6 +2,7 @@ import React, { Component, } from 'react'
 import { View, TouchableHighlight, ListView, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import Actions from '../../actions'
+import { Actions as RouterActions } from 'react-native-router-flux';
 import API from '../../api/DailyDripApi'
 
 class DripCard extends Component {
@@ -33,7 +34,8 @@ class TopicScreen extends Component {
   static propTypes = {}
 
   static defaultProps = {
-    fetchDrips: function(){}
+    fetchDrips: function(){},
+    onPress: function(){}
   }
 
   constructor(props) {
@@ -58,7 +60,10 @@ class TopicScreen extends Component {
     return (
       <TouchableHighlight
          style={styles.row}
-         onPress={() => console.log("pushed!")}>
+         onPress={() => {
+           this.props.onPress(rowData)
+           RouterActions.dripScreen()
+         }}>
          <View>
            <DripCard drip={rowData}></DripCard>
          </View>
@@ -73,6 +78,7 @@ class TopicScreen extends Component {
         <ListView
           style={styles.items}
           dataSource={this.state.dataSource}
+          enableEmptySections={true}
           renderRow={this.renderRow.bind(this)} />
       </View>
     )
@@ -108,6 +114,10 @@ let mapDispatchToProps = function mapDispatchToProps(dispatch){
       }).catch((error) => {
          console.log(error)
         })
+    },
+    onPress: (drip) => {
+      // NOTE: This should really just set the dripID, and it should reduce to the right one
+      dispatch(Actions.setDrip(drip))
     }
   }
 }
