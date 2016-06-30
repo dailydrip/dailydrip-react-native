@@ -5,7 +5,7 @@ let topics = (state=[], action) => {
     case 'FETCH_TOPICS':
       return action.topics
     default:
-      return []
+      return state
   }
 }
 
@@ -14,10 +14,9 @@ let drips = (state=[], action) => {
     case 'FETCH_DRIPS':
       return action.drips
     default:
-      return []
+      return state
   }
 }
-
 
 let reducers = combineReducers({
   topics,

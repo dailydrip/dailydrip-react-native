@@ -1,5 +1,5 @@
 import React, { Component, } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, TouchableHighlight, ListView, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import Actions from '../../actions'
 import API from '../../api/DailyDripApi'
@@ -10,8 +10,21 @@ class DripCard extends Component {
   }
 
   render() {
+    let cardStyles = StyleSheet.create({
+      container: {
+          padding: 10
+      },
+      title: {
+        fontSize: 20,
+        textAlign: 'left'
+      }
+    })
+    let {title, teaser} = this.props.drip;
     return (
-      <Text>this is a drip</Text>
+      <View style={cardStyles.container}>
+        <Text style={cardStyles.title}>{title}</Text>
+        <Text>{teaser}</Text>
+      </View>
     )
   }
 }
@@ -25,23 +38,42 @@ class TopicScreen extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
+    this.state = {
+      dataSource: this.ds.cloneWithRows(this.props.drips)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      dataSource: this.ds.cloneWithRows(nextProps.drips)
+    })
   }
 
   componentDidMount(){
     this.props.fetchDrips(this.props.topic.id)
   }
 
+  renderRow(rowData) {
+    return (
+      <TouchableHighlight
+         style={styles.row}
+         onPress={() => console.log("pushed!")}>
+         <View>
+           <DripCard drip={rowData}></DripCard>
+         </View>
+      </TouchableHighlight>
+    )
+  }
+
   render() {
     const drips = this.props.drips || []
-    let dripViews = drips.map((drip,i) => {
-      return <DripCard key={i} drip={drip}></DripCard>
-    })
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{this.props.topic.title}</Text>
-        <Text style={styles.title}>{this.props.topic.description}</Text>
-        { dripViews }
+        <ListView
+          style={styles.items}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow.bind(this)} />
       </View>
     )
   }
@@ -49,16 +81,16 @@ class TopicScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 90,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 60,
+    flex: 1
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 20,
+  items: {
+    padding: 10,
+    height: 20,
+  },
+  row: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc'
   },
 });
 
@@ -72,9 +104,10 @@ let mapDispatchToProps = function mapDispatchToProps(dispatch){
   return {
     fetchDrips: (topicId) => {
       API.getDrips(topicId).then((data) => {
-        debugger
         dispatch(Actions.setDrips(data.data.drips))
-      }).catch((error) => { console.log(error) })
+      }).catch((error) => {
+         console.log(error)
+        })
     }
   }
 }

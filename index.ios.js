@@ -5,23 +5,22 @@ import {
   Text,
   View
 } from 'react-native';
-
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import reducers from './reducers'
-
+import createLogger from 'redux-logger'
 import App from './components/App.js';
 
-let store = createStore(reducers)
+const logger = createLogger()
+const createStoreWithMiddleware = applyMiddleware(logger)(createStore)
+let store = createStoreWithMiddleware(reducers)
 
 class Project extends Component {
   render() {
     return (
-      <View>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </View>
+      <Provider store={store}>
+        <App />
+      </Provider>
     );
   }
 }
