@@ -1,5 +1,5 @@
 import React, { Component, } from 'react'
-import { ScrollView, View, Text, StyleSheet } from 'react-native'
+import { ScrollView, View, WebView, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import Actions from '../../actions'
 import API from '../../api/DailyDripApi'
@@ -17,21 +17,25 @@ class DripScreen extends Component {
 
   render() {
     const drip = this.props.drip || {}
+    console.log(drip)
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.title}>{drip.title}</Text>
-        <Text style={styles.description}>{drip.description}</Text>
-      </ScrollView>
+        <WebView style={styles.description} source={ { html: drip.description_html, baseUrl: "https://www.dailydrip.com/" } } />
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60
+    marginTop: 60,
+    flex: 1
   },
   title: {
     fontSize: 20
+  },
+  description: {
   }
 });
 
