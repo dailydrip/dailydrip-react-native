@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -20,9 +21,15 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		E1FEF6671D24D8BC00316642 /* RCTVideoPlayer in Resources */ = {isa = PBXBuildFile; fileRef = E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */; };
 		57E856A4890844F0A9A36E31 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F9050F28A249C8AF1F2370 /* libRCTVideo.a */; };
+		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		E1CA94311D2867240041898D /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94301D2867240041898D /* base.css */; };
+		E1CA94371D286A760041898D /* drip.css in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94321D286A760041898D /* drip.css */; };
+		E1CA94381D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94331D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js */; };
+		E1CA94391D286A760041898D /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94341D286A760041898D /* highlight.pack.js */; };
+		E1CA943A1D286A760041898D /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94351D286A760041898D /* jquery.min.js */; };
+		E1CA943B1D286A760041898D /* monokai-sublime.css in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94361D286A760041898D /* monokai-sublime.css */; };
+		E1FEF6671D24D8BC00316642 /* RCTVideoPlayer in Resources */ = {isa = PBXBuildFile; fileRef = E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +110,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		E1CE33F31D2862B70062C6B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80409FF264EC4642BBAAE828 /* RCTVideo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTVideo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -126,10 +140,16 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Project/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		80409FF264EC4642BBAAE828 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		90F9050F28A249C8AF1F2370 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
+		E1CA94301D2867240041898D /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
+		E1CA94321D286A760041898D /* drip.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = drip.css; sourceTree = "<group>"; };
+		E1CA94331D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = fix_redcarpet_syntax_highlighting_indentation.js; sourceTree = "<group>"; };
+		E1CA94341D286A760041898D /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
+		E1CA94351D286A760041898D /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		E1CA94361D286A760041898D /* monokai-sublime.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "monokai-sublime.css"; sourceTree = "<group>"; };
 		E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RCTVideoPlayer; path = "../node_modules/react-native-videoplayer/RCTVideoPlayer"; sourceTree = "<group>"; };
-		80409FF264EC4642BBAAE828 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; name = "RCTVideo.xcodeproj"; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		90F9050F28A249C8AF1F2370 /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +313,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E1CE33F81D28630C0062C6B5 /* Resources */,
 				E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */,
 				13B07FAE1A68108700A75B9A /* Project */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -310,6 +331,27 @@
 				00E356EE1AD99517003FC87E /* ProjectTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E1CE33E81D2862B60062C6B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1CE33F41D2862B70062C6B5 /* libRCTVideo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1CE33F81D28630C0062C6B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA94321D286A760041898D /* drip.css */,
+				E1CA94331D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js */,
+				E1CA94341D286A760041898D /* highlight.pack.js */,
+				E1CA94351D286A760041898D /* jquery.min.js */,
+				E1CA94361D286A760041898D /* monokai-sublime.css */,
+				E1CA94301D2867240041898D /* base.css */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +453,10 @@
 					ProjectRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
 				},
 				{
+					ProductGroup = E1CE33E81D2862B60062C6B5 /* Products */;
+					ProjectRef = 80409FF264EC4642BBAAE828 /* RCTVideo.xcodeproj */;
+				},
+				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 				},
@@ -498,6 +544,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E1CE33F41D2862B70062C6B5 /* libRCTVideo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTVideo.a;
+			remoteRef = E1CE33F31D2862B70062C6B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -512,9 +565,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CA94381D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E1CA943B1D286A760041898D /* monokai-sublime.css in Resources */,
+				E1CA943A1D286A760041898D /* jquery.min.js in Resources */,
+				E1CA94371D286A760041898D /* drip.css in Resources */,
 				E1FEF6671D24D8BC00316642 /* RCTVideoPlayer in Resources */,
+				E1CA94311D2867240041898D /* base.css in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				E1CA94391D286A760041898D /* highlight.pack.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,12 +648,12 @@
 				INFOPLIST_FILE = ProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project.app/Project";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project.app/Project";
 			};
 			name = Debug;
 		};
@@ -606,12 +665,12 @@
 				INFOPLIST_FILE = ProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project.app/Project";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project.app/Project";
 			};
 			name = Release;
 		};
