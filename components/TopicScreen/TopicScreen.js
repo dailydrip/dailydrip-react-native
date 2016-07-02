@@ -44,6 +44,7 @@ class TopicScreen extends Component {
     this.state = {
       dataSource: this.ds.cloneWithRows(this.props.drips)
     }
+    RouterActions.refresh({title: this.props.topic.title})
   }
 
   componentWillReceiveProps(nextProps) {
