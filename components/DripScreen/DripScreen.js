@@ -1,8 +1,9 @@
 import React, { Component, } from 'react'
-import { ScrollView, View, Text, StyleSheet } from 'react-native'
+import { ScrollView, View, WebView, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import Actions from '../../actions'
 import API from '../../api/DailyDripApi'
+import Video from 'react-native-video'
 
 class DripScreen extends Component {
   static propTypes = {}
@@ -17,21 +18,53 @@ class DripScreen extends Component {
 
   render() {
     const drip = this.props.drip || {}
+    let html = ""
+
+    html += "<html><head>"
+    html += "<link rel='stylesheet' type='text/css' href='drip.css' />"
+    html += "<link rel='stylesheet' type='text/css' href='monokai-sublime.css' />"
+    html += "<script src='highlight.pack.js'></script>"
+    html += "<script src='jquery.min.js'></script>"
+    html += "<script src='fix_redcarpet_syntax_highlighting_indentation.js'></script>"
+    html += "</head><body>"
+    html += drip.description_html
+    html += "<script>$(\"pre code\").prettyPre(); hljs.initHighlightingOnLoad();</script>"
+    html += "</body></html>"
+
+    let video = drip.video.url ? (
+        <Video style={styles.video}
+            source={{uri: drip.video.url}}
+        />
+    ) : (<View></View>)
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
+        {video}
         <Text style={styles.title}>{drip.title}</Text>
-        <Text style={styles.description}>{drip.description}</Text>
-      </ScrollView>
+        <WebView
+           style={styles.description}
+           source={
+             {
+               html: html,
+               baseUrl: "web"
+  					 }
+           } />
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60
+    marginTop: 60,
+    flex: 1
+  },
+  video: {
+    flex: 1
   },
   title: {
     fontSize: 20
+  },
+  description: {
   }
 });
 

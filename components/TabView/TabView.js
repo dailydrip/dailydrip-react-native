@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, AsyncStorage, } from 'react-native';
 import Button from 'react-native-button';
 import { Actions as RouterActions } from 'react-native-router-flux';
 import { connect } from 'react-redux'
+import variables from '../variables'
 
 const contextTypes = {
   drawer: React.PropTypes.object,
@@ -18,7 +19,14 @@ const propTypes = {
 const styles = StyleSheet.create({
   container: {
     marginTop: 90,
+    height: 400,
+    backgroundColor: variables.dodgerBlue,
   },
+  navLink: {
+    color: "#ffffff",
+    textAlign: "left",
+    padding: 10,
+  }
 });
 
 const TabView = (props, context) => {
@@ -34,15 +42,15 @@ const TabView = (props, context) => {
       drawer.close()
       RouterActions.topicScreen({ topic })
     }
-    return <Button key={i} onPress={onButtonPress}>{topic.title}</Button>
+    return <Button style={styles.navLink} key={i} onPress={onButtonPress}>{topic.title}</Button>
   })
 
   return (
     <View style={[styles.container, props.sceneStyle]}>
-      <Button onPress={() => { drawer.close(); RouterActions.mainScreen({type: 'reset'}); }}>Home</Button>
+      <Button style={styles.navLink} onPress={() => { drawer.close(); RouterActions.mainScreen({type: 'reset'}); }}>Home</Button>
       { topicButtons }
-      <Button onPress={() => { drawer.close(); RouterActions.settingsScreen({type: 'reset'}); }}>Settings</Button>
-      <Button onPress={() => { drawer.close(); logout(); RouterActions.loginScreen({type: 'reset'}); }}>Logout</Button>
+      <Button style={styles.navLink} onPress={() => { drawer.close(); RouterActions.settingsScreen({type: 'reset'}); }}>Settings</Button>
+      <Button style={styles.navLink} onPress={() => { drawer.close(); logout(); RouterActions.loginScreen({type: 'reset'}); }}>Logout</Button>
     </View>
   )
 }
