@@ -22,4 +22,8 @@ const DripCard = (props) => {
   );
 };
 
+DripCard.propTypes = {
+  drip: React.PropTypes.object,
+};
+
 export default DripCard;

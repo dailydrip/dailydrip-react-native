@@ -48,6 +48,9 @@ class LoginScreen extends Component {
       login: '',
       password: '',
     };
+    this.handleChangeLogin = this.handleChangeLogin.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
@@ -78,7 +81,7 @@ class LoginScreen extends Component {
           ref="login"
           autoCapitalize="none"
           style={styles.loginInput}
-          onChange={this.handleChangeLogin.bind(this)}
+          onChange={this.handleChangeLogin}
           keyboardType="email-address"
           value={this.state.login}
         />
@@ -87,14 +90,14 @@ class LoginScreen extends Component {
           ref="password"
           style={styles.loginInput}
           secureTextEntry
-          onChange={this.handleChangePassword.bind(this)}
+          onChange={this.handleChangePassword}
           value={this.state.password}
         />
 
         <TouchableHighlight
           style={styles.button}
           underlayColor="white"
-          onPress={this.handleSubmit.bind(this)}
+          onPress={this.handleSubmit}
         >
           <Text style={styles.buttonText}> LOGIN </Text>
         </TouchableHighlight>

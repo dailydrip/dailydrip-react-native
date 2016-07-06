@@ -22,7 +22,12 @@ const styles = StyleSheet.create({
 });
 
 class TopicScreen extends Component {
-  static propTypes = {}
+  static propTypes = {
+    drips: React.PropTypes.arrayOf(React.PropTypes.object),
+    topic: React.PropTypes.object,
+    fetchDrips: React.PropTypes.function,
+    onPress: React.PropTypes.function,
+  }
 
   static defaultProps = {
     fetchDrips() {},
@@ -35,17 +40,18 @@ class TopicScreen extends Component {
     this.state = {
       dataSource: this.ds.cloneWithRows(this.props.drips),
     };
+    this.renderRow = this.renderRow.bind(this);
     RouterActions.refresh({ title: this.props.topic.title });
+  }
+
+  componentDidMount() {
+    this.props.fetchDrips(this.props.topic.id);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       dataSource: this.ds.cloneWithRows(nextProps.drips),
     });
-  }
-
-  componentDidMount() {
-    this.props.fetchDrips(this.props.topic.id);
   }
 
   renderRow(rowData) {
@@ -57,22 +63,21 @@ class TopicScreen extends Component {
           RouterActions.dripScreen();
         }}
       >
-         <View>
-           <DripCard drip={rowData} />
-         </View>
+        <View>
+          <DripCard drip={rowData} />
+        </View>
       </TouchableHighlight>
     );
   }
 
   render() {
-    const drips = this.props.drips || [];
     return (
       <View style={styles.container}>
         <ListView
           style={styles.items}
           dataSource={this.state.dataSource}
           enableEmptySections
-          renderRow={this.renderRow.bind(this)}
+          renderRow={this.renderRow}
         />
       </View>
     );

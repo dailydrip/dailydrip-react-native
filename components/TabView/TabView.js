@@ -13,6 +13,13 @@ const propTypes = {
   name: PropTypes.string,
   sceneStyle: View.propTypes.style,
   title: PropTypes.string,
+  topics: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        title: PropTypes.string.isRequired,
+      }
+    )
+  ),
 };
 
 const styles = StyleSheet.create({
