@@ -19,7 +19,7 @@ class LoginScreen extends Component {
   handleSubmit(){
     API.login(this.state.login, this.state.password).then(function(data){
       AsyncStorage.setItem("auth_token", data.data.token).done();
-      RouterActions.mainScreen({ type: 'reset'});
+      RouterActions.mainScreen({ type: 'reset' });
     }).catch(function(err){
       console.log(err);
     });
