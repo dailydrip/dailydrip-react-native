@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'react';
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet, View, AsyncStorage } from 'react-native';
 import Button from 'react-native-button';
 import { Actions as RouterActions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -33,7 +32,7 @@ const TabView = (props, context) => {
   const drawer = context.drawer;
   const topics = props.topics || [];
 
-  const logout = function () {
+  const logout = () => {
     AsyncStorage.clear(); // LOL A BIT TOO ZEALOUS
   };
 
@@ -58,13 +57,13 @@ const TabView = (props, context) => {
 TabView.contextTypes = contextTypes;
 TabView.propTypes = propTypes;
 
-const mapStateToProps = function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     topics: state.topics,
   };
 };
 
-const mapDispatchToProps = function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = () => {
   return {};
 };
 

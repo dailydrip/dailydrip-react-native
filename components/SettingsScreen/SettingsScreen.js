@@ -1,25 +1,5 @@
-import React, { Component, } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-
-class SettingsScreen extends Component {
-
-  static propTypes = {}
-
-  static defaultProps = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>SETTINGS</Text>
-      </View>
-    )
-  }
-}
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,4 +16,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen
+class SettingsScreen extends Component {
+
+  static propTypes = {}
+
+  static defaultProps = {}
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>SETTINGS</Text>
+      </View>
+    );
+  }
+}
+
+export default SettingsScreen;
