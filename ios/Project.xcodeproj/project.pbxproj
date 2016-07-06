@@ -23,12 +23,19 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		57E856A4890844F0A9A36E31 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F9050F28A249C8AF1F2370 /* libRCTVideo.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		E1CA94311D2867240041898D /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94301D2867240041898D /* base.css */; };
 		E1CA94371D286A760041898D /* drip.css in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94321D286A760041898D /* drip.css */; };
 		E1CA94381D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94331D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js */; };
 		E1CA94391D286A760041898D /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94341D286A760041898D /* highlight.pack.js */; };
 		E1CA943A1D286A760041898D /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94351D286A760041898D /* jquery.min.js */; };
 		E1CA943B1D286A760041898D /* monokai-sublime.css in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94361D286A760041898D /* monokai-sublime.css */; };
+		E1CA94451D286BA00041898D /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA943D1D286BA00041898D /* Montserrat-Black.otf */; };
+		E1CA94461D286BA00041898D /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA943E1D286BA00041898D /* Montserrat-Bold.otf */; };
+		E1CA94471D286BA00041898D /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA943F1D286BA00041898D /* Montserrat-ExtraBold.otf */; };
+		E1CA94481D286BA00041898D /* Montserrat-Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94401D286BA00041898D /* Montserrat-Hairline.otf */; };
+		E1CA94491D286BA00041898D /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94411D286BA00041898D /* Montserrat-Light.otf */; };
+		E1CA944A1D286BA00041898D /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94421D286BA00041898D /* Montserrat-Regular.otf */; };
+		E1CA944B1D286BA00041898D /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94431D286BA00041898D /* Montserrat-SemiBold.otf */; };
+		E1CA944C1D286BA00041898D /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E1CA94441D286BA00041898D /* Montserrat-UltraLight.otf */; };
 		E1FEF6671D24D8BC00316642 /* RCTVideoPlayer in Resources */ = {isa = PBXBuildFile; fileRef = E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */; };
 /* End PBXBuildFile section */
 
@@ -143,12 +150,19 @@
 		80409FF264EC4642BBAAE828 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		90F9050F28A249C8AF1F2370 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
-		E1CA94301D2867240041898D /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		E1CA94321D286A760041898D /* drip.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = drip.css; sourceTree = "<group>"; };
 		E1CA94331D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = fix_redcarpet_syntax_highlighting_indentation.js; sourceTree = "<group>"; };
 		E1CA94341D286A760041898D /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		E1CA94351D286A760041898D /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
 		E1CA94361D286A760041898D /* monokai-sublime.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "monokai-sublime.css"; sourceTree = "<group>"; };
+		E1CA943D1D286BA00041898D /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		E1CA943E1D286BA00041898D /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		E1CA943F1D286BA00041898D /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		E1CA94401D286BA00041898D /* Montserrat-Hairline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Hairline.otf"; sourceTree = "<group>"; };
+		E1CA94411D286BA00041898D /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		E1CA94421D286BA00041898D /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		E1CA94431D286BA00041898D /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		E1CA94441D286BA00041898D /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RCTVideoPlayer; path = "../node_modules/react-native-videoplayer/RCTVideoPlayer"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -313,6 +327,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E1CA943C1D286B7D0041898D /* Fonts */,
 				E1CE33F81D28630C0062C6B5 /* Resources */,
 				E1FEF6661D24D8BC00316642 /* RCTVideoPlayer */,
 				13B07FAE1A68108700A75B9A /* Project */,
@@ -333,6 +348,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E1CA943C1D286B7D0041898D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA943D1D286BA00041898D /* Montserrat-Black.otf */,
+				E1CA943E1D286BA00041898D /* Montserrat-Bold.otf */,
+				E1CA943F1D286BA00041898D /* Montserrat-ExtraBold.otf */,
+				E1CA94401D286BA00041898D /* Montserrat-Hairline.otf */,
+				E1CA94411D286BA00041898D /* Montserrat-Light.otf */,
+				E1CA94421D286BA00041898D /* Montserrat-Regular.otf */,
+				E1CA94431D286BA00041898D /* Montserrat-SemiBold.otf */,
+				E1CA94441D286BA00041898D /* Montserrat-UltraLight.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		E1CE33E81D2862B60062C6B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +379,6 @@
 				E1CA94341D286A760041898D /* highlight.pack.js */,
 				E1CA94351D286A760041898D /* jquery.min.js */,
 				E1CA94361D286A760041898D /* monokai-sublime.css */,
-				E1CA94301D2867240041898D /* base.css */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -565,15 +594,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CA94471D286BA00041898D /* Montserrat-ExtraBold.otf in Resources */,
 				E1CA94381D286A760041898D /* fix_redcarpet_syntax_highlighting_indentation.js in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E1CA943B1D286A760041898D /* monokai-sublime.css in Resources */,
 				E1CA943A1D286A760041898D /* jquery.min.js in Resources */,
+				E1CA94491D286BA00041898D /* Montserrat-Light.otf in Resources */,
 				E1CA94371D286A760041898D /* drip.css in Resources */,
 				E1FEF6671D24D8BC00316642 /* RCTVideoPlayer in Resources */,
-				E1CA94311D2867240041898D /* base.css in Resources */,
+				E1CA944A1D286BA00041898D /* Montserrat-Regular.otf in Resources */,
+				E1CA944B1D286BA00041898D /* Montserrat-SemiBold.otf in Resources */,
+				E1CA94481D286BA00041898D /* Montserrat-Hairline.otf in Resources */,
+				E1CA94451D286BA00041898D /* Montserrat-Black.otf in Resources */,
+				E1CA944C1D286BA00041898D /* Montserrat-UltraLight.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				E1CA94391D286A760041898D /* highlight.pack.js in Resources */,
+				E1CA94461D286BA00041898D /* Montserrat-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
