@@ -1,26 +1,24 @@
-import React, { Component, } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import React, { Component } from 'react';
 import { Router, Scene, DefaultRenderer } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 
-import MainScreen from './MainScreen/MainScreen'
-import TopicScreen from './TopicScreen/TopicScreen'
-import DripScreen from './DripScreen/DripScreen'
-import SettingsScreen from './SettingsScreen/SettingsScreen'
-import LoginScreen from './LoginScreen/LoginScreen'
-import TabView from './TabView/TabView'
-import variables from './variables'
+import MainScreen from './MainScreen/MainScreen';
+import TopicScreen from './TopicScreen/TopicScreen';
+import DripScreen from './DripScreen/DripScreen';
+import SettingsScreen from './SettingsScreen/SettingsScreen';
+import LoginScreen from './LoginScreen/LoginScreen';
+import TabView from './TabView/TabView';
+import variables from './variables';
 
-const styles = StyleSheet.create({
-  drawer: {
-    backgroundColor: "#ff0000",
-  },
-});
 
 export class DrawerDailyDrip extends Component {
+  static propTypes = {
+    navigationState: React.PropTypes.object,
+  }
+
   render() {
-    const state = this.props.navigationState
-    const children = state.children
+    const state = this.props.navigationState;
+    const children = state.children;
 
     return (
             <Drawer
@@ -37,12 +35,12 @@ export class DrawerDailyDrip extends Component {
                   backgroundColor: variables.dodgerBlue,
                   shadowColor: '#000000',
                   shadowOpacity: 0.3,
-                  shadowRadius: 15
+                  shadowRadius: 15,
                 },
                 drawer: {
                   backgroundColor: variables.dodgerBlue,
-                  top: 0
-                }
+                  top: 0,
+                },
               }}
               tweenHandler={(ratio) => ({
                 main: { opacity: Math.max(0.54, 1 - ratio) },
@@ -68,12 +66,12 @@ class App extends Component {
             <Scene key="topicScreen" component={TopicScreen} title="" />
             <Scene key="dripScreen" component={DripScreen} title="" />
             <Scene key="settingsScreen" component={SettingsScreen} title="" />
-            <Scene key="loginScreen" component={LoginScreen} title="" hideNavBar={true} />
+            <Scene key="loginScreen" component={LoginScreen} title="" hideNavBar />
   	      </Scene>
         </Scene>
 	    </Router>
-    )
+    );
   }
 }
 
-export default App
+export default App;

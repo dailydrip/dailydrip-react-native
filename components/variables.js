@@ -1,3 +1,3 @@
 export default {
-    dodgerBlue: "#4A90E2"
-}
+  dodgerBlue: '#4A90E2',
+};
