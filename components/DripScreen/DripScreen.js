@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import { View, WebView, Text, StyleSheet } from 'react-native';
+import { View, WebView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import Video from 'react-native-video';
-import Button from 'react-native-button';
 import { Actions as RouterActions } from 'react-native-router-flux';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 17,
     flex: 1,
     flexDirection: 'column',
-  },
-  videoContainer: {
-  },
-  video: {
-    marginTop: 46,
-    height: 212,
   },
   description: {
     flex: 3,
@@ -24,7 +17,7 @@ const styles = StyleSheet.create({
 
 class DripScreen extends Component {
   static propTypes = {
-    drip: React.PropTypes.object
+    drip: React.PropTypes.object,
   }
 
   static defaultProps = {
@@ -32,12 +25,6 @@ class DripScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      paused: true,
-    };
-    this.togglePaused = (() => {
-      this.setState({ paused: !this.state.paused });
-    });
     RouterActions.refresh({ title: this.props.drip.title });
   }
 
@@ -56,22 +43,9 @@ class DripScreen extends Component {
     html += '<script>$("pre code").prettyPre(); hljs.initHighlightingOnLoad();</script>';
     html += '</body></html>';
 
-    let pauseText = this.state.paused ? 'Play' : 'Pause';
-
-    let controls = (
-      <Button onPress={this.togglePaused}>
-        {pauseText}
-      </Button>
-    );
 
     let video = drip.video.url ? (
-      <View style={styles.videoContainer}>
-        <Video style={styles.video}
-          source={{ uri: drip.video.url }}
-          paused={this.state.paused}
-        />
-        {controls}
-      </View>
+      <VideoPlayer source={{ uri: drip.video.url }} />
     ) : (<View />);
     return (
       <View style={styles.container}>
