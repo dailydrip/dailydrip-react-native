@@ -7,7 +7,7 @@ import variables from '../variables';
 export class Drawer extends Component {
   static propTypes = {
     navigationState: React.PropTypes.object,
-    onNavigate: React.PropTypes.fun,
+    onNavigate: React.PropTypes.func,
   }
 
   render() {
