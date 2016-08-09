@@ -15,3 +15,13 @@ Using React Native 0.28
 ```
 npm run lint
 ```
+=======
+# Setup
+```
+  npm install
+  npm install -g react-native-cli
+  brew install watchman
+  brew install flow
+
+  reach-native run-ios
+```
