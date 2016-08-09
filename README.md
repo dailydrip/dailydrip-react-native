@@ -4,7 +4,6 @@ This is a proof of concept for a potential DailyDrip React Native app - iOS and 
 
 Using React Native 0.28
 
-
 ## Lint
 
 - [eslint](http://eslint.org/)
@@ -15,13 +14,14 @@ Using React Native 0.28
 ```
 npm run lint
 ```
-=======
-# Setup
-```
-  npm install
-  npm install -g react-native-cli
-  brew install watchman
-  brew install flow
 
-  reach-native run-ios
+# Setup
+
+```
+npm install
+npm install -g react-native-cli
+brew install watchman
+brew install flow
+
+react-native run-ios
 ```
