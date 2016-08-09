@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { View, WebView, Text, StyleSheet } from 'react-native';
+import { View, WebView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import Video from 'react-native-video';
+import { Actions as RouterActions } from 'react-native-router-flux';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
+    marginTop: 17,
     flex: 1,
-  },
-  video: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 20,
+    flexDirection: 'column',
   },
   description: {
+    flex: 3,
   },
 });
 
@@ -28,7 +25,7 @@ class DripScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    RouterActions.refresh({ title: this.props.drip.title });
   }
 
   render() {
@@ -46,16 +43,13 @@ class DripScreen extends Component {
     html += '<script>$("pre code").prettyPre(); hljs.initHighlightingOnLoad();</script>';
     html += '</body></html>';
 
+
     let video = drip.video.url ? (
-      <Video
-        style={styles.video}
-        source={{ uri: drip.video.url }}
-      />
+      <VideoPlayer source={{ uri: drip.video.url }} />
     ) : (<View />);
     return (
       <View style={styles.container}>
         {video}
-        <Text style={styles.title}>{drip.title}</Text>
         <WebView
           style={styles.description}
           source={{
