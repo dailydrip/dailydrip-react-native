@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   items: {
-    padding: 10,
     height: 20,
   },
   row: {
@@ -58,6 +57,7 @@ class TopicScreen extends Component {
     return (
       <TouchableHighlight
         style={styles.row}
+        underlayColor={'white'}
         onPress={() => {
           this.props.onPress(rowData);
           RouterActions.dripScreen();
