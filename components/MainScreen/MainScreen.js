@@ -5,15 +5,11 @@ import { connect } from 'react-redux';
 import Actions from '../../actions';
 import API from '../../api/DailyDripApi';
 
-const MK = require('react-native-material-kit');
-const {
-  MKButton,
-  MKColor,
-} = MK;
+import { MKButton, MKColor } from 'react-native-material-kit';
 
 // colored button with default theme (configurable)
 const ColoredRaisedButton = MKButton.coloredButton()
-  .withText('BUTTON')
+  .withText('Foo')
   .withOnPress(() => {
     console.log("Hi, it's a colored button!");
   })

@@ -11,6 +11,15 @@ import reducers from './reducers'
 import createLogger from 'redux-logger'
 import App from './components/App.js';
 
+import { setTheme, MKColor } from 'react-native-material-kit';
+
+// customize the material design theme
+setTheme({
+  primaryColor: MKColor.Purple,
+  primaryColorRGB: MKColor.RGBPurple,
+  accentColor: MKColor.Amber,
+});
+
 const logger = createLogger()
 const createStoreWithMiddleware = applyMiddleware(logger)(createStore)
 let store = createStoreWithMiddleware(reducers)
