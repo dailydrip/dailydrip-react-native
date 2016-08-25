@@ -12,6 +12,7 @@
     "react-native": "0.28",
     "react-native-button": "^1.6.0",
     "react-native-drawer": "^2.2.4",
+    "react-native-material-design": "^0.3.7",
     "react-native-router-flux": "^3.30.2",
     "react-native-showdown": "^0.1.1",
     "react-native-video": "^0.8.0",
