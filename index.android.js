@@ -17,12 +17,20 @@ import reducers from './reducers'
 import createLogger from 'redux-logger'
 //import App from './components/App.js'
 
-import { setTheme, MKColor } from 'react-native-material-kit'
+// https://www.materialui.co/colors
+const Blue600 = '#039BE5';
+const Amber600 = '#FFB300';
+
+import {
+  setTheme,
+  MKColor,
+  MKButton
+} from 'react-native-material-kit'
 
 // customize the material design theme
 setTheme({
-  primaryColor: MKColor.palette_blue_600,
-  accentColor: MKColor.Amber,
+  primaryColor: Blue600,
+  accentColor: Amber600
 })
 
 const logger = createLogger()
@@ -61,25 +69,40 @@ function renderScreen(route, navigator) {
 class Topics extends Component {
   render() {
     return (
-      <Text>zomg topics</Text>
+      <View>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+        <Text>zomg topics</Text>
+      </View>
     )
   }
 }
 
 class Home extends Component {
   render() {
-    return (
-      <ScrollView style={styles.list}
-      contentContainerStyle={styles.container}>
-      <TouchableOpacity onPress={() => {
+    const TopicsButton = MKButton.coloredButton()
+      .withText('Topics')
+      .withOnPress(() => {
         this.props.navigator.push({
           title: 'Topics',
           component: Topics,
         })
-      }}>
-      <Text style={styles.pushLabel}>Topics</Text>
-      </TouchableOpacity>
-      </ScrollView>
+      })
+      .build();
+
+    return (
+      <View style={styles.list}>
+        <TopicsButton style={styles.button} />
+      </View>
     )
   }
 }
@@ -152,10 +175,10 @@ var styles = StyleSheet.create({
   list: {
     backgroundColor: '#F5FCFF',
     paddingTop: 64,
+    alignItems: 'center'
   },
   container: {
-    flex: 1,
-    alignItems: 'stretch',
+    flex: 1
   },
   welcome: {
     fontSize: 20,
@@ -172,6 +195,11 @@ var styles = StyleSheet.create({
     color: '#2196F3',
     textAlign: 'center',
   },
+  button: {
+    width: 100,
+    alignItems: 'center',
+    padding: 10
+  }
 });
 
 AppRegistry.registerComponent('Project', () => Project)
