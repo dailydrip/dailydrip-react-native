@@ -15,8 +15,7 @@ import { setTheme, MKColor } from 'react-native-material-kit';
 
 // customize the material design theme
 setTheme({
-  primaryColor: MKColor.Purple,
-  primaryColorRGB: MKColor.RGBPurple,
+  primaryColor: MKColor.palette_blue_600,
   accentColor: MKColor.Amber,
 });
 
