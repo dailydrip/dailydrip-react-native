@@ -5,6 +5,21 @@ import { connect } from 'react-redux';
 import Actions from '../../actions';
 import API from '../../api/DailyDripApi';
 
+const MK = require('react-native-material-kit');
+const {
+  MKButton,
+  MKColor,
+} = MK;
+
+// colored button with default theme (configurable)
+const ColoredRaisedButton = MKButton.coloredButton()
+  .withText('BUTTON')
+  .withOnPress(() => {
+    console.log("Hi, it's a colored button!");
+  })
+  .build();
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -43,6 +58,7 @@ class MainScreen extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>DailyDrip Main Screen</Text>
+        <ColoredRaisedButton />
       </View>
     );
   }
