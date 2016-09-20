@@ -5,12 +5,17 @@ import {
   Text,
   View,
   Navigator,
-  DrawerLayoutAndroid
+  DrawerLayoutAndroid,
+  AsyncStorage
 } from 'react-native'
 
 import { Ripple, Button, Card } from 'react-native-material-design'
 import Navigate from '../utils/Navigate'
 import Toolbar from './Toolbar'
+import Drawer from './Drawer/Drawer'
+import { connect } from 'react-redux'
+import API from '../api/DailyDripApi'
+import Actions from '../actions'
 
 class App extends Component {
 	static childContextTypes = {
@@ -25,6 +30,19 @@ class App extends Component {
 			navigator: null
 		}
 	}
+
+  componentDidMount() {
+    AsyncStorage.getItem('auth_token')
+      .then((value) => {
+        if (value) {
+          console.log('we were logged in zomg')
+          this.props.fetchTopics()
+        } else {
+          console.log('herp derp not logged in')
+          Navigate.to("login")
+        }
+      })
+  }
 
 	getChildContext = () => {
 		return {
@@ -56,10 +74,10 @@ class App extends Component {
         renderNavigationView={() => {
           if (drawer && navigator) {
             return (
-              <Text>Foo</Text>
+              <Drawer></Drawer>
             )
           }
-          return null;
+          return null
         }}
         ref={(drawer) => { !this.state.drawer ? this.setDrawer(drawer) : null }}
       >
@@ -68,7 +86,7 @@ class App extends Component {
             initialRoute={Navigate.getInitialRoute()}
             navigationBar={<Toolbar onIconPress={drawer.openDrawer} theme="googleBlue" />}
             configureScene={() => {
-              return Navigator.SceneConfigs.FadeAndroid;
+              return Navigator.SceneConfigs.FadeAndroid
             }}
             ref={(navigator) => { !this.state.navigator ? this.setNavigator(navigator) : null }}
             renderScene={(route) => {
@@ -77,9 +95,9 @@ class App extends Component {
                   <View
                   style={styles.scene}
                   showsVerticalScrollIndicator={false}>
-                  <route.component title={route.title} path={route.path} {...route.props} />
+                    <route.component title={route.title} path={route.path} {...route.props} />
                   </View>
-                );
+                )
               }
             }}
           />
@@ -96,4 +114,21 @@ const styles = {
 	}
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTopics: () => {
+      API.getTopics().then((response) => {
+        dispatch(Actions.setTopics(response.data.topics))
+      })
+    }
+  }
+}
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default ConnectedApp
+//export default App
