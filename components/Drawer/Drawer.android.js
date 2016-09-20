@@ -13,6 +13,8 @@ import { Drawer as MDrawer, Ripple, Button, Card } from 'react-native-material-d
 
 class Drawer extends Component {
   static propTypes = {
+    drawerWrapper: PropTypes.object.isRequired,
+    navigate: PropTypes.object.isRequired,
     topics: PropTypes.arrayOf(
       PropTypes.shape(
         {
@@ -27,13 +29,15 @@ class Drawer extends Component {
 	}
 
   getTopicItems() {
+    let { navigate, drawerWrapper } = this.props
+    console.log(drawerWrapper)
     return this.props.topics.map((topic) => {
       return {
         icon: 'face',
         value: topic.title,
         label: '3',
         active: false,
-        onPress: () => {},
+        onPress: () => {navigate.to('topic', topic.title, {topic: topic}); drawerWrapper.closeDrawer()},
         onLongPress: () => {}
       }
     })

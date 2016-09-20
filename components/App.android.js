@@ -80,7 +80,7 @@ class App extends Component {
         renderNavigationView={() => {
           if (drawer && navigator) {
             return (
-              <Drawer navigator={navigator}></Drawer>
+              <Drawer drawerWrapper={drawer} navigate={navigator}></Drawer>
             )
           }
           return null
