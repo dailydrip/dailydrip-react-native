@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react'
 import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage } from 'react-native'
 import { Ripple, Button } from 'react-native-material-design'
 import API from '../api/DailyDripApi'
+import Actions from '../actions'
+import { connect } from 'react-redux'
 
 class Login extends Component {
   static propTypes = {
@@ -24,6 +26,7 @@ class Login extends Component {
     const { navigate } = this.props
     API.login(this.state.login, this.state.password).then((data) => {
       AsyncStorage.setItem('auth_token', data.data.token).done()
+      this.props.fetchTopics()
       navigate.to('welcome')
     }).catch((err) => {
       console.error(err)
@@ -107,4 +110,21 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Login
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTopics: () => {
+      API.getTopics().then((response) => {
+        dispatch(Actions.setTopics(response.data.topics))
+      })
+    }
+  }
+}
+
+const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login)
+
+//export default Login
+export default ConnectedLogin
