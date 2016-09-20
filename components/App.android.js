@@ -31,19 +31,6 @@ class App extends Component {
 		}
 	}
 
-  componentDidMount() {
-    AsyncStorage.getItem('auth_token')
-      .then((value) => {
-        if (value) {
-          console.log('we were logged in zomg')
-          this.props.fetchTopics()
-        } else {
-          console.log('herp derp not logged in')
-          Navigate.to("login")
-        }
-      })
-  }
-
 	getChildContext = () => {
 		return {
 			drawer: this.state.drawer,
@@ -58,11 +45,30 @@ class App extends Component {
 	}
 
 	setNavigator = (navigator) => {
+    let navigate = new Navigate(navigator)
 		this.setState({
-			navigator: new Navigate(navigator)
+			navigator: navigate
 		})
+    this.checkAuth(navigate)
 	}
 
+  checkAuth(navigate) {
+    AsyncStorage.getItem('auth_token').then((value) => {
+      if (value) {
+        console.log('we were logged in zomg')
+        this.props.fetchTopics()
+      } else {
+        console.log('herp derp not logged in')
+        if(navigate){
+          console.log('trying to navigate')
+          navigate.to('login')
+          console.log('navigated...')
+        } else {
+          console.log('no navigate what to dooooo?')
+        }
+      }
+    })
+  }
 
   render() {
 		const { drawer, navigator } = this.state
@@ -74,7 +80,7 @@ class App extends Component {
         renderNavigationView={() => {
           if (drawer && navigator) {
             return (
-              <Drawer></Drawer>
+              <Drawer navigator={navigator}></Drawer>
             )
           }
           return null
@@ -95,7 +101,7 @@ class App extends Component {
                   <View
                   style={styles.scene}
                   showsVerticalScrollIndicator={false}>
-                    <route.component title={route.title} path={route.path} {...route.props} />
+                    <route.component navigate={this.state.navigator} title={route.title} path={route.path} {...route.props} />
                   </View>
                 )
               }

@@ -37,9 +37,7 @@ const styles = StyleSheet.create({
 });
 
 class LoginScreen extends Component {
-
   static propTypes = {}
-
   static defaultProps = {}
 
   constructor(props) {
