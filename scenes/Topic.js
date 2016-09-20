@@ -1,5 +1,16 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native'
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Platform,
+} from 'react-native'
+
+import {
+  Card
+} from 'react-native-material-design'
 
 class Topic extends Component {
   static propTypes = {
@@ -8,11 +19,33 @@ class Topic extends Component {
   render() {
     console.log("rendering from Topic")
     return (
-      <View>
-        <Text>ZOMG THIS IS THE {this.props.topic.title} topic!</Text>
-      </View>
+      <ScrollView styles={styles.scrollView}>
+        <View style={styles.container}>
+          <Card>
+            <Card.Body>
+              <Text>Some episode</Text>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Mauris sagittis pellentesque lacus eleifend lacinia...
+              </Text>
+            </Card.Body>
+          </Card>
+        </View>
+      </ScrollView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1
+  },
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+    padding: 20,
+    marginTop: Platform.OS === 'android' ? 56 : 0,
+  }
+})
 
 export default Topic
