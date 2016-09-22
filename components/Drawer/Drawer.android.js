@@ -37,7 +37,10 @@ class Drawer extends Component {
         value: topic.title,
         label: '3',
         active: false,
-        onPress: () => {navigate.to('topic', topic.title, {topic: topic}); drawerWrapper.closeDrawer()},
+        onPress: () => {
+          navigate.to('topic', topic.title, {topic: topic})
+          drawerWrapper.closeDrawer()
+        },
         onLongPress: () => {}
       }
     })

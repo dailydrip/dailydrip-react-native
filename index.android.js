@@ -6,7 +6,7 @@ import {
   View,
   Navigator,
   DrawerLayoutAndroid
-} from 'react-native';
+} from 'react-native'
 
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
@@ -28,4 +28,4 @@ class Project extends Component {
   }
 }
 
-AppRegistry.registerComponent('Project', () => Project);
+AppRegistry.registerComponent('Project', () => Project)
