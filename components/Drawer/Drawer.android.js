@@ -1,56 +1,42 @@
 import React, { PropTypes, Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
-
-import {
-  AppRegistry,
-  Text,
-  View,
-  Navigator,
-  DrawerLayoutAndroid
-} from 'react-native'
+import _ from 'lodash'
 
 import { connect } from 'react-redux'
-import { Drawer as MDrawer, Ripple, Button, Card } from 'react-native-material-design'
+import { Drawer as MDrawer } from 'react-native-material-design'
 
 class Drawer extends Component {
   static propTypes = {
     drawerWrapper: PropTypes.object.isRequired,
     navigate: PropTypes.object.isRequired,
-    topics: ImmutablePropTypes.listOf(
-      ImmutablePropTypes.contains({
-        title: PropTypes.string.isRequired,
-      })
-    ).isRequired
+    topics: ImmutablePropTypes.map.isRequired,
   }
 
-	constructor(props) {
-		super(props)
-	}
-
   getTopicItems() {
-    let { navigate, drawerWrapper } = this.props
-    return this.props.topics.map((topic) => {
+    const { navigate, drawerWrapper, topics } = this.props
+    return _.map(topics.toJS(), ((topic) => {
       return {
         icon: 'face',
-        value: topic.get('title'),
+        value: topic.title,
         label: '3',
         active: false,
+
         onPress: () => {
-          navigate.to('topic', topic.get('title'), {topic: topic})
+          navigate.to('topic', topic.title, { topic })
           drawerWrapper.closeDrawer()
         },
-        onLongPress: () => {}
+        onLongPress: () => {},
       }
-    })
+    }))
   }
 
   render() {
     let topicItems = this.getTopicItems()
 
     return (
-      <MDrawer theme='light'>
+      <MDrawer theme="light">
         <MDrawer.Section
-          items={topicItems}
+          items={topicItems} // MDrawer doesn't want ImmutableJS items
         >
         </MDrawer.Section>
       </MDrawer>
@@ -59,10 +45,8 @@ class Drawer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps")
-  console.log(state.toJS())
   return {
-    topics: state.get("topics"),
+    topics: state.get('topics'),
   };
 };
 

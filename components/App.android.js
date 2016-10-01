@@ -129,7 +129,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTopics: () => {
       API.getTopics().then((response) => {
-        dispatch(Actions.setTopics(Immutable.fromJS(response.data.topics)))
+        let topicsMap = response.data.topics.reduce((acc, topic) => {
+          return acc.set(topic.id, Immutable.fromJS(topic))
+        }, Immutable.Map())
+        dispatch(Actions.setTopics(topicsMap))
       })
     }
   }

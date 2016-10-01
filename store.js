@@ -8,7 +8,7 @@ import Immutable from 'immutable'
 import * as reducers from './reducers'
 
 const initialState = Immutable.fromJS({
-  topics: [],
+  topics: {},
   drips: [],
   drip: null
 })

@@ -17,7 +17,6 @@ class Topic extends Component {
     topic: PropTypes.object
   }
   render() {
-    console.log("rendering from Topic")
     return (
       <ScrollView styles={styles.scrollView}>
         <View style={styles.container}>
