@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import _ from 'lodash'
+import Actions from '../../actions'
 
 import { connect } from 'react-redux'
 import { Drawer as MDrawer } from 'react-native-material-design'
@@ -18,11 +19,13 @@ class Drawer extends Component {
       return {
         icon: 'face',
         value: topic.title,
-        label: '3',
+        label: `${topic.drip_count}`,
         active: false,
 
         onPress: () => {
-          navigate.to('topic', topic.title, { topic })
+          const { selectTopic, navigate } = this.props
+          selectTopic(topic)
+          navigate.to('topic', topic.title, { topic }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
           drawerWrapper.closeDrawer()
         },
         onLongPress: () => {},
@@ -50,8 +53,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => {
-  return {};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectTopic: (topic) => {
+      dispatch(Actions.selectTopic(topic.id))
+    }
+  };
 };
 
 const ConnectedDrawer = connect(mapStateToProps, mapDispatchToProps)(Drawer);

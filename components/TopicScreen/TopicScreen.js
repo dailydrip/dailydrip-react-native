@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { View, TouchableHighlight, ListView, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import Actions from '../../actions';
-import { Actions as RouterActions } from 'react-native-router-flux';
-import API from '../../api/DailyDripApi';
-import DripCard from '../DripCard/DripCard';
+import React, { Component } from 'react'
+import { View, TouchableHighlight, ListView, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
+import Actions from '../../actions'
+import { Actions as RouterActions } from 'react-native-router-flux'
+import API from '../../api/DailyDripApi'
+import DripCard from '../DripCard/DripCard'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
-});
+})
 
 class TopicScreen extends Component {
   static propTypes = {
@@ -34,23 +34,23 @@ class TopicScreen extends Component {
   }
 
   constructor(props) {
-    super(props);
-    this.ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
+    super(props)
+    this.ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
     this.state = {
       dataSource: this.ds.cloneWithRows(this.props.drips),
-    };
-    this.renderRow = this.renderRow.bind(this);
-    RouterActions.refresh({ title: this.props.topic.title });
+    }
+    this.renderRow = this.renderRow.bind(this)
+    RouterActions.refresh({ title: this.props.topic.title })
   }
 
   componentDidMount() {
-    this.props.fetchDrips(this.props.topic.id);
+    this.props.fetchDrips(this.props.topic.id)
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       dataSource: this.ds.cloneWithRows(nextProps.drips),
-    });
+    })
   }
 
   renderRow(rowData) {
@@ -59,15 +59,15 @@ class TopicScreen extends Component {
         style={styles.row}
         underlayColor={'white'}
         onPress={() => {
-          this.props.onPress(rowData);
-          RouterActions.dripScreen();
+          this.props.onPress(rowData)
+          RouterActions.dripScreen()
         }}
       >
         <View>
           <DripCard drip={rowData} />
         </View>
       </TouchableHighlight>
-    );
+    )
   }
 
   render() {
@@ -80,34 +80,39 @@ class TopicScreen extends Component {
           renderRow={this.renderRow}
         />
       </View>
-    );
+    )
   }
 }
 
 
-const mapStateToProps = function mapStateToProps(state) {
+const mapStateToProps = ({selectedTopicId, topics}) => {
+  const selectedTopic = topics.get(selectedTopicId)
   return {
-    drips: state.drips,
-  };
-};
+    drips: selectedTopicId.drips,
+  }
+}
 
-const mapDispatchToProps = function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchDrips: (topicId) => {
       API.getDrips(topicId).then((data) => {
-        dispatch(Actions.setDrips(data.data.drips));
+        const dripsMap = response.data.drips.reduce((acc, drip) => {
+          return acc.set(drip.id, Immutable.fromJS(drip))
+        }, Immutable.Map())
+        dispatch(Actions.setDrips(topicId, dripsMap)
       }).catch((error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
     },
     onPress: (drip) => {
-      // NOTE: This should really just set the dripID, and it should reduce to the right one
-      dispatch(Actions.setDrip(drip));
+      // TODO: This should really just set the dripID, and it should reduce to the right one
+      // We should also rely on NavigationExperimental ultimately to handle moving the actual freaking nav transition
+      dispatch(Actions.setDrip(drip))
     },
-  };
-};
+  }
+}
 
-const ConnectedTopicScreen = connect(mapStateToProps, mapDispatchToProps)(TopicScreen);
+const ConnectedTopicScreen = connect(mapStateToProps, mapDispatchToProps)(TopicScreen)
 
 // export default TopicScreen
-export default ConnectedTopicScreen;
+export default ConnectedTopicScreen
