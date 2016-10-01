@@ -1,6 +1,6 @@
 import Immutable from 'immutable'
 import { createReducer } from 'redux-immutablejs'
-import { FETCH_TOPICS, FETCH_DRIPS, SET_DRIP, SELECT_TOPIC } from './actions'
+import { FETCH_TOPICS, FETCH_DRIPS, SET_DRIP, SELECT_TOPIC } from '../actions'
 
 export const topics = createReducer(Immutable.Map(), {
   [FETCH_TOPICS]: (state, { topics }) => topics,
