@@ -96,7 +96,7 @@ const mapStateToProps = ({ selectedTopicId, topics }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchDrips: (topicId) => {
-      API.getDrips(topicId).then((data) => {
+      API.getDrips(topicId).then((response) => {
         const dripsMap = response.data.drips.reduce((acc, drip) => {
           return acc.set(drip.id, Immutable.fromJS(drip))
         }, Immutable.Map())
