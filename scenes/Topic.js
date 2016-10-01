@@ -4,6 +4,8 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import API from '../api/DailyDripApi'
 import Actions from '../actions'
 import { connect } from 'react-redux'
+import { havelockBlue, white } from '../utils/colors'
+import { color } from 'react-native-material-design-styles'
 
 import {
   View,
@@ -22,6 +24,7 @@ class Topic extends Component {
     topic: ImmutablePropTypes.map.isRequired,
     fetchDrips: PropTypes.func,
     onPress: PropTypes.func,
+    navigate: PropTypes.object,
   }
 
   static defaultProps = {
@@ -56,17 +59,25 @@ class Topic extends Component {
     })
   }
 
+  navigateToDrip(drip) {
+    const { navigate } = this.props
+    navigate.to('drip', drip.title, { id: drip.id })
+  }
+
   renderRow(rowData) {
     return (
       <View style={styles.item}>
-        <Card>
-          <Card.Body>
-            <Text>{rowData.title}</Text>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Mauris sagittis pellentesque lacus eleifend lacinia...
-            </Text>
-          </Card.Body>
+        <Card
+          style={ { paddingLeft: 0, paddingRight: 0 } }
+          onPress={ () => this.navigateToDrip(rowData) }
+        >
+          <View style={styles.cardTitleContainer}>
+            <Text style={styles.cardTitleIdentifier}>{rowData.identifier}</Text>
+            <Text style={styles.cardTitleText}>{rowData.title}</Text>
+          </View>
+          <View style={styles.cardBody}>
+            <Text style={styles.cardTeaserText}>{rowData.teaser}</Text>
+          </View>
         </Card>
       </View>
     )
@@ -98,6 +109,37 @@ class Topic extends Component {
 }
 
 const styles = StyleSheet.create({
+  cardTitleContainer: {
+    borderTopRightRadius: 2,
+    borderTopLeftRadius: 2,
+    backgroundColor: color.googleBlue500.color,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
+  cardTitleIdentifier: {
+    color: white,
+    fontSize: 30,
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Normal',
+  },
+  cardTitleText: {
+    color: white,
+    fontSize: 20,
+    fontWeight: 'normal',
+    fontFamily: 'Montserrat-Thin',
+    marginBottom: 10,
+  },
+  cardBody: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
+  cardTeaserText: {
+    fontSize: 16,
+  },
   scrollView: {
     flex: 1,
   },

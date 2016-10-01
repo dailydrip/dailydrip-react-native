@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import OurAppIntro from '../utils/AppIntro'
+import { havelockBlue, white, textGrey } from '../utils/colors'
 // import AppIntro from 'react-native-app-intro'
-
-const havelockBlue = '#4A90E2'
-const white = '#ffffff'
-const textGrey = '#505050'
 
 const customStyles = {
   title: {

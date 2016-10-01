@@ -18,5 +18,12 @@ export default {
 
     title: 'Topic',
     component: require('./scenes/Topic').default
+  },
+
+  drip: {
+    initialRoute: false,
+
+    title: 'Drip',
+    component: require('./scenes/Drip').default
   }
 }

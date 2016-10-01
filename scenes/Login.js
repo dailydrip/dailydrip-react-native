@@ -9,7 +9,7 @@ const logo = require('../assets/images/logo.png')
 
 class Login extends Component {
   static propTypes = {
-    navigate: PropTypes.object
+    navigate: PropTypes.object,
   }
   static defaultProps = {}
 
