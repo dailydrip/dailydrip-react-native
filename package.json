@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "eslint --fix ./components/**/*"
+    "lint": "eslint --fix ./components/**/*",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "dependencies": {
     "axios": "^0.12.0",
     "immutable": "^3.8.1",
     "lodash": "^4.16.2",
-    "react": "15.1.0",
+    "react": "15.2.1",
     "react-immutable-proptypes": "^2.1.0",
-    "react-native": "0.28",
+    "react-native": "^0.31.0",
     "react-native-app-intro": "^1.1.4",
     "react-native-button": "^1.6.0",
     "react-native-drawer": "^2.2.4",
@@ -32,6 +33,7 @@
     "eslint-config-airbnb": "9.0.1",
     "eslint-plugin-import": "1.9.2",
     "eslint-plugin-jsx-a11y": "1.5.3",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint-plugin-react": "^5.2.2",
+    "flow-bin": "^0.26.0"
   }
 }

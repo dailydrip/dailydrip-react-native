@@ -39,12 +39,19 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSAppTransportSecurity</key>
+	<!--See http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/ -->
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
+  <key>UIAppFonts</key>
+  <array>
 		<string>Montserrat-Black.otf</string>
 		<string>Montserrat-Bold.otf</string>
 		<string>Montserrat-ExtraBold.otf</string>
