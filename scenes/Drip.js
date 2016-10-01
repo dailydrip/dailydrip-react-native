@@ -1,16 +1,21 @@
 import React, { PropTypes, Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
-import API from '../api/DailyDripApi'
 import { connect } from 'react-redux'
 import VideoPlayer from '../components/VideoPlayer/VideoPlayer'
 
 import {
   View,
   WebView,
-  Text,
   StyleSheet,
-  Platform,
 } from 'react-native'
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingRight: 10,
+    paddingLeft: 10,
+  },
+})
 
 class Drip extends Component {
   static propTypes = {
@@ -52,14 +57,6 @@ class Drip extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingRight: 10,
-    paddingLeft: 10,
-  },
-})
 
 const mapStateToProps = (state, ownProps) => {
   const topics = state.get('topics')
