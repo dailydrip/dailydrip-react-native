@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Video from 'react-native-video'
 import Button from 'react-native-button'
@@ -14,7 +14,9 @@ const styles = StyleSheet.create({
 
 class VideoPlayer extends Component {
   static propTypes = {
-    source: React.PropTypes.string,
+    source: PropTypes.shape({
+      uri: PropTypes.string.isRequired,
+    }),
   }
 
   static defaultProps = {
