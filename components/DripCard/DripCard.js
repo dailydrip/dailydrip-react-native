@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 
 const DripCard = (props) => {
   const cardStyles = StyleSheet.create({
@@ -10,20 +10,20 @@ const DripCard = (props) => {
       fontSize: 20,
       textAlign: 'left',
     },
-  });
+  })
 
-  let { title, teaser } = props.drip;
+  let { title, teaser } = props.drip
 
   return (
     <View style={cardStyles.container}>
       <Text style={cardStyles.title}>{title}</Text>
       <Text>{teaser}</Text>
     </View>
-  );
-};
+  )
+}
 
 DripCard.propTypes = {
   drip: React.PropTypes.object,
-};
+}
 
-export default DripCard;
+export default DripCard

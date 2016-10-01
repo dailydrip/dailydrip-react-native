@@ -11,10 +11,11 @@ class Drawer extends Component {
     drawerWrapper: PropTypes.object.isRequired,
     navigate: PropTypes.object.isRequired,
     topics: ImmutablePropTypes.map.isRequired,
+    selectTopic: PropTypes.func.isRequired,
   }
 
   getTopicItems() {
-    const { navigate, drawerWrapper, topics } = this.props
+    const { drawerWrapper, topics } = this.props
     return _.map(topics.toJS(), ((topic) => {
       return {
         icon: 'face',
@@ -50,17 +51,17 @@ class Drawer extends Component {
 const mapStateToProps = (state) => {
   return {
     topics: state.get('topics'),
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     selectTopic: (topic) => {
       dispatch(Actions.selectTopic(topic.id))
-    }
-  };
-};
+    },
+  }
+}
 
-const ConnectedDrawer = connect(mapStateToProps, mapDispatchToProps)(Drawer);
+const ConnectedDrawer = connect(mapStateToProps, mapDispatchToProps)(Drawer)
 
 export default ConnectedDrawer

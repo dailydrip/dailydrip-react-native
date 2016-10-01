@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { DefaultRenderer } from 'react-native-router-flux';
-import NativeDrawer from 'react-native-drawer';
-import TabView from '../TabView/TabView';
-import variables from '../variables';
+import React, { Component } from 'react'
+import { DefaultRenderer } from 'react-native-router-flux'
+import NativeDrawer from 'react-native-drawer'
+import TabView from '../TabView/TabView'
+import variables from '../variables'
 
 export class Drawer extends Component {
   static propTypes = {
@@ -11,8 +11,8 @@ export class Drawer extends Component {
   }
 
   render() {
-    const state = this.props.navigationState;
-    const children = state.children;
+    const state = this.props.navigationState
+    const children = state.children
 
     return (
       <NativeDrawer
@@ -42,8 +42,8 @@ export class Drawer extends Component {
       >
         <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
       </NativeDrawer>
-    );
+    )
   }
 }
 
-export default Drawer;
+export default Drawer

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-});
+})
 
 class SettingsScreen extends Component {
 
@@ -23,8 +23,8 @@ class SettingsScreen extends Component {
   static defaultProps = {}
 
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   render() {
@@ -32,8 +32,8 @@ class SettingsScreen extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>SETTINGS</Text>
       </View>
-    );
+    )
   }
 }
 
-export default SettingsScreen;
+export default SettingsScreen

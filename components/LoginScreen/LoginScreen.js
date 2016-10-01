@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage } from 'react-native';
-import { Actions as RouterActions } from 'react-native-router-flux';
-import API from '../../api/DailyDripApi';
+import React, { Component } from 'react'
+import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage } from 'react-native'
+import { Actions as RouterActions } from 'react-native-router-flux'
+import API from '../../api/DailyDripApi'
 
 const styles = StyleSheet.create({
   container: {
@@ -34,42 +34,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
   },
-});
+})
 
 class LoginScreen extends Component {
   static propTypes = {}
   static defaultProps = {}
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       login: '',
       password: '',
-    };
-    this.handleChangeLogin = this.handleChangeLogin.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    this.handleChangeLogin = this.handleChangeLogin.bind(this)
+    this.handleChangePassword = this.handleChangePassword.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit() {
     API.login(this.state.login, this.state.password).then((data) => {
-      AsyncStorage.setItem('auth_token', data.data.token).done();
-      RouterActions.mainScreen({ type: 'reset' });
+      AsyncStorage.setItem('auth_token', data.data.token).done()
+      RouterActions.mainScreen({ type: 'reset' })
     }).catch((err) => {
-      console.error(err);
-    });
+      console.error(err)
+    })
   }
 
   handleChangeLogin(event) {
     this.setState({
       login: event.nativeEvent.text,
-    });
+    })
   }
 
   handleChangePassword(event) {
     this.setState({
       password: event.nativeEvent.text,
-    });
+    })
   }
 
   render() {
@@ -100,9 +100,9 @@ class LoginScreen extends Component {
           <Text style={styles.buttonText}> LOGIN </Text>
         </TouchableHighlight>
       </View>
-    );
+    )
   }
 }
 
 
-export default LoginScreen;
+export default LoginScreen

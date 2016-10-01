@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
+import React, { Component } from 'react'
+import { View, Text, StyleSheet, AsyncStorage } from 'react-native'
+import AppIntro from 'react-native-app-intro'
 
 class Welcome extends Component {
   render() {
@@ -12,4 +13,4 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome;
+export default Welcome

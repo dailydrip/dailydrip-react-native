@@ -5,6 +5,7 @@ import Actions from '../../actions'
 import { Actions as RouterActions } from 'react-native-router-flux'
 import API from '../../api/DailyDripApi'
 import DripCard from '../DripCard/DripCard'
+import Immutable from 'immutable'
 
 const styles = StyleSheet.create({
   container: {
@@ -85,10 +86,10 @@ class TopicScreen extends Component {
 }
 
 
-const mapStateToProps = ({selectedTopicId, topics}) => {
-  const selectedTopic = topics.get(selectedTopicId)
+const mapStateToProps = ({ selectedTopicId, topics }) => {
+  const selectedTopic = topics.get(selectedTopicId.get('id'))
   return {
-    drips: selectedTopicId.drips,
+    drips: selectedTopic.drips,
   }
 }
 
@@ -99,7 +100,7 @@ const mapDispatchToProps = (dispatch) => {
         const dripsMap = response.data.drips.reduce((acc, drip) => {
           return acc.set(drip.id, Immutable.fromJS(drip))
         }, Immutable.Map())
-        dispatch(Actions.setDrips(topicId, dripsMap)
+        dispatch(Actions.setDrips(topicId, dripsMap))
       }).catch((error) => {
         console.log(error)
       })
