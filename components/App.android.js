@@ -56,14 +56,10 @@ class App extends Component {
   checkAuth(navigate) {
     AsyncStorage.getItem('auth_token').then((value) => {
       if (value) {
-        console.log('we were logged in zomg')
         this.props.fetchTopics()
       } else {
-        console.log('herp derp not logged in')
         if(navigate){
-          console.log('trying to navigate')
           navigate.to('login')
-          console.log('navigated...')
         } else {
           console.log('no navigate what to dooooo?')
         }

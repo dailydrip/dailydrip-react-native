@@ -35,12 +35,26 @@ class Drawer extends Component {
   }
 
   render() {
-    let topicItems = this.getTopicItems()
+    const topicItems = this.getTopicItems()
+    const { drawerWrapper, navigate } = this.props
+    const additionalItems = [
+      {
+        icon: 'face',
+        value: 'Log Out',
+        active: false,
+        onPress: () => {
+          navigate.to('login')
+          drawerWrapper.closeDrawer()
+        },
+        onLongPress: () => {},
+      }
+    ]
+    const drawerItems = topicItems.concat(additionalItems)
 
     return (
       <MDrawer theme="light">
         <MDrawer.Section
-          items={topicItems} // MDrawer doesn't want ImmutableJS items
+          items={drawerItems} // MDrawer doesn't want ImmutableJS items
         >
         </MDrawer.Section>
       </MDrawer>
@@ -59,6 +73,9 @@ const mapDispatchToProps = (dispatch) => {
     selectTopic: (topic) => {
       dispatch(Actions.selectTopic(topic.id))
     },
+    logOut: () => {
+
+    }
   }
 }
 

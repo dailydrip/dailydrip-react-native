@@ -1,9 +1,11 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage } from 'react-native'
+import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage, Image } from 'react-native'
 import { Ripple, Button } from 'react-native-material-design'
 import API from '../api/DailyDripApi'
 import Actions from '../actions'
 import { connect } from 'react-redux'
+
+const logo = require('../assets/images/logo.png')
 
 class Login extends Component {
   static propTypes = {
@@ -36,7 +38,7 @@ class Login extends Component {
   handleChangeLogin(event) {
     this.setState({
       login: event.nativeEvent.text,
-    });
+    })
   }
 
   handleChangePassword(event) {
@@ -48,30 +50,40 @@ class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          ref="login"
-          placeholder="email"
-          autoCapitalize="none"
-          style={styles.loginInput}
-          onChange={this.handleChangeLogin}
-          keyboardType="email-address"
-          value={this.state.login}
-        />
+        <Image style={styles.logo} source={logo} />
+        <View style={styles.form}>
+          <TextInput
+            ref='login'
+            autoFocus
+            placeholder='Email'
+            autoCapitalize='none'
+            style={styles.loginInput}
+            onChange={this.handleChangeLogin}
+            onSubmitEditing={() => this.refs['password'].focus() }
+            blurOnSubmit={false}
+            keyboardType='email-address'
+            returnKeyType='next'
+            value={this.state.login}
+          />
 
-        <TextInput
-          ref="password"
-          placeholder="password"
-          style={styles.loginInput}
-          secureTextEntry
-          onChange={this.handleChangePassword}
-          value={this.state.password}
-        />
+          <TextInput
+            ref='password'
+            placeholder='Password'
+            style={styles.loginInput}
+            secureTextEntry
+            onChange={this.handleChangePassword}
+            onSubmitEditing={this.handleSubmit}
+            blurOnSubmit={false}
+            value={this.state.password}
+            returnKeyType='go'
+          />
 
-        <Button
-          text="LOGIN"
-          raised
-          onPress={this.handleSubmit}
-        />
+          <Button
+            text="SIGN IN"
+            styles={ { text: { fontSize: 25 } } }
+            onPress={this.handleSubmit}
+          />
+        </View>
       </View>
     )
   }
@@ -81,21 +93,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#111',
-    alignSelf: 'center',
-  },
-  button: {
-    height: 45,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    marginBottom: 10,
-    marginTop: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
   },
   loginInput: {
     height: 50,
@@ -108,6 +105,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
   },
+  logo: {
+    marginTop: 40,
+    marginBottom: 40,
+    width: 173,
+    height: 148,
+    resizeMode: 'stretch'
+  }
 })
 
 const mapStateToProps = (state) => {
@@ -119,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchTopics: () => {
       API.getTopics().then((response) => {
         dispatch(Actions.setTopics(response.data.topics))
-      })
+      }).catch((err) => console.log(err))
     }
   }
 }
