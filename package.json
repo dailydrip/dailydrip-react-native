@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "eslint --fix ./components/**/*",
+    "lint": "eslint --fix ./components/**/* ./scenes/**/*",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "dependencies": {

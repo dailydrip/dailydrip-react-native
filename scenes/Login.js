@@ -14,14 +14,14 @@ class Login extends Component {
   static defaultProps = {}
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       login: '',
       password: '',
-    };
-    this.handleChangeLogin = this.handleChangeLogin.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    this.handleChangeLogin = this.handleChangeLogin.bind(this)
+    this.handleChangePassword = this.handleChangePassword.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit() {
@@ -32,7 +32,7 @@ class Login extends Component {
       navigate.to('welcome')
     }).catch((err) => {
       console.error(err)
-    });
+    })
   }
 
   handleChangeLogin(event) {
@@ -44,7 +44,7 @@ class Login extends Component {
   handleChangePassword(event) {
     this.setState({
       password: event.nativeEvent.text,
-    });
+    })
   }
 
   render() {
@@ -53,34 +53,34 @@ class Login extends Component {
         <Image style={styles.logo} source={logo} />
         <View style={styles.form}>
           <TextInput
-            ref='login'
+            ref="login"
             autoFocus
-            placeholder='Email'
-            autoCapitalize='none'
+            placeholder="Email"
+            autoCapitalize="none"
             style={styles.loginInput}
             onChange={this.handleChangeLogin}
-            onSubmitEditing={() => this.refs['password'].focus() }
+            onSubmitEditing={() => this.refs['password'].focus()}
             blurOnSubmit={false}
-            keyboardType='email-address'
-            returnKeyType='next'
+            keyboardType="email-address"
+            returnKeyType="next"
             value={this.state.login}
           />
 
           <TextInput
-            ref='password'
-            placeholder='Password'
+            ref="password"
+            placeholder="Password"
             style={styles.loginInput}
             secureTextEntry
             onChange={this.handleChangePassword}
             onSubmitEditing={this.handleSubmit}
             blurOnSubmit={false}
             value={this.state.password}
-            returnKeyType='go'
+            returnKeyType="go"
           />
 
           <Button
             text="SIGN IN"
-            styles={ { text: { fontSize: 25 } } }
+            styles={{ text: { fontSize: 25 } }}
             onPress={this.handleSubmit}
           />
         </View>
@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     width: 173,
     height: 148,
-    resizeMode: 'stretch'
-  }
+    resizeMode: 'stretch',
+  },
 })
 
 const mapStateToProps = (state) => {
@@ -124,11 +124,11 @@ const mapDispatchToProps = (dispatch) => {
       API.getTopics().then((response) => {
         dispatch(Actions.setTopics(response.data.topics))
       }).catch((err) => console.log(err))
-    }
+    },
   }
 }
 
 const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login)
 
-//export default Login
+// export default Login
 export default ConnectedLogin
