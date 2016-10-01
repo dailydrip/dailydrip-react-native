@@ -1,15 +1,41 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text, StyleSheet, TouchableHighlight, TextInput, AsyncStorage, Image } from 'react-native'
-import { Ripple, Button } from 'react-native-material-design'
+import { View, StyleSheet, TextInput, AsyncStorage, Image } from 'react-native'
+import { Button } from 'react-native-material-design'
 import API from '../api/DailyDripApi'
 import Actions from '../actions'
 import { connect } from 'react-redux'
 
 const logo = require('../assets/images/logo.png')
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  loginInput: {
+    height: 50,
+    width: 300,
+    padding: 4,
+    marginRight: 5,
+    fontSize: 23,
+    color: 'black',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+  logo: {
+    marginTop: 40,
+    marginBottom: 40,
+    width: 173,
+    height: 148,
+    resizeMode: 'stretch',
+  },
+})
+
 class Login extends Component {
   static propTypes = {
     navigate: PropTypes.object,
+    fetchTopics: PropTypes.func,
   }
   static defaultProps = {}
 
@@ -59,7 +85,7 @@ class Login extends Component {
             autoCapitalize="none"
             style={styles.loginInput}
             onChange={this.handleChangeLogin}
-            onSubmitEditing={() => this.refs['password'].focus()}
+            onSubmitEditing={() => this.refs.password.focus()}
             blurOnSubmit={false}
             keyboardType="email-address"
             returnKeyType="next"
@@ -89,32 +115,7 @@ class Login extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  loginInput: {
-    height: 50,
-    width: 300,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 23,
-    color: 'black',
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
-  },
-  logo: {
-    marginTop: 40,
-    marginBottom: 40,
-    width: 173,
-    height: 148,
-    resizeMode: 'stretch',
-  },
-})
-
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {}
 }
 
