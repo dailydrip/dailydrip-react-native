@@ -43,11 +43,13 @@ class VideoPlayer extends Component {
   }
 
   getCurrentTimePercentage() {
+    let timePercentage
     if (this.state.currentTime > 0) {
-      return parseFloat(this.state.currentTime) / parseFloat(this.state.duration)
+      timePercentage = parseFloat(this.state.currentTime) / parseFloat(this.state.duration)
     } else {
-      return 0
+      timePercentage = 0
     }
+    return timePercentage
   }
 
   togglePaused() {
@@ -55,20 +57,6 @@ class VideoPlayer extends Component {
   }
 
   render() {
-    const drip = this.props.drip || {}
-    let html = ''
-
-    html += '<html><head>'
-    html += "<link rel='stylesheet' type='text/css' href='drip.css' />"
-    html += "<link rel='stylesheet' type='text/css' href='monokai-sublime.css' />"
-    html += "<script src='highlight.pack.js'></script>"
-    html += "<script src='jquery.min.js'></script>"
-    html += "<script src='fix_redcarpet_syntax_highlighting_indentation.js'></script>"
-    html += '</head><body>'
-    html += drip.description_html
-    html += '<script>$("pre code").prettyPre(); hljs.initHighlightingOnLoad();</script>'
-    html += '</body></html>'
-
     let pauseText = this.state.paused ? 'Play' : 'Pause'
 
     let flexCompleted = this.getCurrentTimePercentage() * 100

@@ -47,7 +47,7 @@ class Drawer extends Component {
           drawerWrapper.closeDrawer()
         },
         onLongPress: () => {},
-      }
+      },
     ]
     const drawerItems = topicItems.concat(additionalItems)
 
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     logOut: () => {
 
-    }
+    },
   }
 }
 
