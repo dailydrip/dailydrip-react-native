@@ -1,38 +1,19 @@
-import { combineReducers } from 'redux'
+import Immutable from 'immutable'
+import { createReducer } from 'redux-immutablejs'
+import { FETCH_TOPICS, FETCH_DRIPS, SET_DRIP } from './actions'
 
-let topics = (state=[], action) => {
-  switch (action.type) {
-    case 'FETCH_TOPICS':
-      return action.topics
-    default:
-      return state
-  }
-}
-
-let drips = (state=[], action) => {
-  switch (action.type) {
-    case 'FETCH_DRIPS':
-      return action.drips
-    default:
-      return state
-  }
-}
-
-let drip = (state={}, action) => {
-  switch (action.type) {
-    case 'SET_DRIP':
-      return action.drip
-    default:
-      return {
-        title: "Some drip yo"
-      }
-  }
-}
-
-let reducers = combineReducers({
-  topics,
-  drips,
-  drip
+export const topics = createReducer(Immutable.fromJS([]), {
+  [FETCH_TOPICS]: (state, action) => {
+    console.log('FETCHED TOPICS')
+    console.log(action.topics)
+    return action.topics
+  },
 })
 
-export default reducers
+export const drips = createReducer(Immutable.fromJS([]), {
+  [FETCH_DRIPS]: (state, action) => action.drips,
+})
+
+export const drip = createReducer(Immutable.fromJS({}), {
+  [SET_DRIP]: (state, action) => action.drip,
+})

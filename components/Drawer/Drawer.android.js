@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 import {
   AppRegistry,
@@ -15,13 +16,11 @@ class Drawer extends Component {
   static propTypes = {
     drawerWrapper: PropTypes.object.isRequired,
     navigate: PropTypes.object.isRequired,
-    topics: PropTypes.arrayOf(
-      PropTypes.shape(
-        {
-          title: PropTypes.string.isRequired,
-        }
-      )
-    )
+    topics: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        title: PropTypes.string.isRequired,
+      })
+    ).isRequired
   }
 
 	constructor(props) {
@@ -30,15 +29,14 @@ class Drawer extends Component {
 
   getTopicItems() {
     let { navigate, drawerWrapper } = this.props
-    console.log(drawerWrapper)
     return this.props.topics.map((topic) => {
       return {
         icon: 'face',
-        value: topic.title,
+        value: topic.get('title'),
         label: '3',
         active: false,
         onPress: () => {
-          navigate.to('topic', topic.title, {topic: topic})
+          navigate.to('topic', topic.get('title'), {topic: topic})
           drawerWrapper.closeDrawer()
         },
         onLongPress: () => {}
@@ -61,8 +59,10 @@ class Drawer extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps")
+  console.log(state.toJS())
   return {
-    topics: state.topics,
+    topics: state.get("topics"),
   };
 };
 

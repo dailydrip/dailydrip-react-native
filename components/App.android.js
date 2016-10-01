@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Immutable from 'immutable'
 
 import {
   AppRegistry,
@@ -128,7 +129,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTopics: () => {
       API.getTopics().then((response) => {
-        dispatch(Actions.setTopics(response.data.topics))
+        dispatch(Actions.setTopics(Immutable.fromJS(response.data.topics)))
       })
     }
   }

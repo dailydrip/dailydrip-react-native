@@ -1,5 +1,6 @@
 module.exports = {
     "extends": "airbnb",
+    "semi": ["never"],
     "parser": "babel-eslint",
     "installedESLint": true,
     "rules":{

@@ -9,14 +9,9 @@ import {
 } from 'react-native'
 
 import { Provider } from 'react-redux'
-import { applyMiddleware, createStore } from 'redux'
-import reducers from './reducers'
-import createLogger from 'redux-logger'
-import App from './components/App.android.js'
+import store from './store'
 
-const logger = createLogger()
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore)
-let store = createStoreWithMiddleware(reducers)
+import App from './components/App.android.js'
 
 class Project extends Component {
   render() {
