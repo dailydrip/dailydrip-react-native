@@ -1,11 +1,9 @@
 import React, { PropTypes, Component } from 'react'
 import { View, StyleSheet, TextInput, AsyncStorage, Image } from 'react-native'
 import { Button } from 'react-native-material-design'
-import API from '../api'
-import Actions from '../actions'
-import { connect } from 'react-redux'
+import API from '../../api'
 
-const logo = require('../../assets/images/logo.png')
+const logo = require('../../../assets/images/logo.png')
 
 const styles = StyleSheet.create({
   container: {
@@ -115,21 +113,4 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {}
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchTopics: () => {
-      API.getTopics().then((response) => {
-        dispatch(Actions.setTopics(response.data.topics))
-      }).catch((err) => console.log(err))
-    },
-  }
-}
-
-const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login)
-
-// export default Login
-export default ConnectedLogin
+export default Login
