@@ -4,14 +4,19 @@ This is the upcoming DailyDrip remote app, using React Native.
 
 ## Lint
 
-- [eslint](http://eslint.org/)
-- [AirBnb Javascript Styleguide](https://github.com/airbnb/javascript)
-- [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
-- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
+We'd like to lint our application nicely for consistency, and to avoid stupid
+bugs.  We have an eslint configuration.  You can run the linter like so:
 
 ```
 npm run lint
 ```
+
+Some potentially relevant links:
+
+- [eslint](http://eslint.org/)
+- [AirBnb Javascript Styleguide](https://github.com/airbnb/javascript)
+- [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
 
 ## Setup
 
