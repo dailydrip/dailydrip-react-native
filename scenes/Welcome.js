@@ -36,7 +36,7 @@ class Welcome extends Component {
     const pageArray = [
       {
         title: 'Why is DailyDrip better?',
-        description: 'People who learn via Distributed Practice retain more in the same time than those who bing learn.  We make daily practice easy.',
+        description: 'People who learn via Distributed Practice retain more in the same time than those who binge learn.  We make daily practice easy.',
         img: 'https://dc045baae05f09959af2a7a07d2f398fbe88d2d1.googledrive.com/host/0B-XkApzKpJ7QZVNoY3RrSS1jaHM',
         imgStyle: {
           height: 80 * 2.5,
