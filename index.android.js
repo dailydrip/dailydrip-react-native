@@ -7,9 +7,9 @@ import {
 } from 'react-native'
 
 import { Provider } from 'react-redux'
-import store, { storageLoader } from './store'
+import store, { storageLoader } from './src/store'
 
-import App from './components/App.android.js'
+import AppViewContainer from './src/modules/AppViewContainer'
 
 class Project extends Component {
   componentWillMount() {
@@ -23,7 +23,7 @@ class Project extends Component {
   render() {
     return (
       <Provider store={store}>
-        <App />
+        <AppViewContainer />
       </Provider>
     )
   }

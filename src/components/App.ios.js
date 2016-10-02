@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Router, Scene } from 'react-native-router-flux';
+import React, { Component } from 'react'
+import { Router, Scene } from 'react-native-router-flux'
 
-import MainScreen from './MainScreen/MainScreen';
-import TopicScreen from './TopicScreen/TopicScreen';
-import DripScreen from './DripScreen/DripScreen';
-import SettingsScreen from './SettingsScreen/SettingsScreen';
-import LoginScreen from './LoginScreen/LoginScreen';
-import Drawer from './Drawer/Drawer';
+import MainScreen from './MainScreen/MainScreen'
+import TopicScreen from './TopicScreen/TopicScreen'
+import DripScreen from './DripScreen/DripScreen'
+import SettingsScreen from './SettingsScreen/SettingsScreen'
+import LoginScreen from './LoginScreen/LoginScreen'
+import Drawer from './Drawer/Drawer'
 
 class App extends Component {
   static propTypes = {}
@@ -25,8 +25,8 @@ class App extends Component {
           </Scene>
         </Scene>
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App

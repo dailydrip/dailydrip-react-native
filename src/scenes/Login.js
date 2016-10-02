@@ -5,7 +5,7 @@ import API from '../api'
 import Actions from '../actions'
 import { connect } from 'react-redux'
 
-const logo = require('../assets/images/logo.png')
+const logo = require('../../assets/images/logo.png')
 
 const styles = StyleSheet.create({
   container: {
