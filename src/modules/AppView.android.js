@@ -9,7 +9,7 @@ import {
 
 import Navigate from '../utils/Navigate'
 import Toolbar from '../components/Toolbar'
-import Drawer from '../components/Drawer'
+import Drawer from '../components/Drawer/DrawerContainer'
 
 const styles = {
   scene: {

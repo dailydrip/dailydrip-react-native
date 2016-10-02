@@ -1,9 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import _ from 'lodash'
-import Actions from '../../actions'
 
-import { connect } from 'react-redux'
 import { Drawer as MDrawer } from 'react-native-material-design'
 
 class Drawer extends Component {
@@ -62,23 +60,4 @@ class Drawer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    topics: state.get('topics'),
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    selectTopic: (topic) => {
-      dispatch(Actions.selectTopic(topic.id))
-    },
-    logOut: () => {
-
-    },
-  }
-}
-
-const ConnectedDrawer = connect(mapStateToProps, mapDispatchToProps)(Drawer)
-
-export default ConnectedDrawer
+export default Drawer
