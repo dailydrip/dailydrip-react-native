@@ -5,7 +5,7 @@ export const SELECT_TOPIC = 'SELECT_TOPIC'
 const setTopics = (topics) => {
   return {
     type: FETCH_TOPICS,
-    topics
+    topics,
   }
 }
 
@@ -13,21 +13,21 @@ const setDrips = (topicId, drips) => {
   return {
     type: FETCH_DRIPS,
     topicId,
-    drips
+    drips,
   }
 }
 
 const selectTopic = (topicId) => {
   return {
     type: SELECT_TOPIC,
-    topicId
+    topicId,
   }
 }
 
 const Actions = {
   setTopics,
   setDrips,
-  selectTopic
+  selectTopic,
 }
 
 export default Actions

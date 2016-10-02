@@ -7,7 +7,7 @@ import * as RemoteReduxDevTools from 'remote-redux-devtools'
 
 let devTools
 
-if(global.reduxNativeDevTools) {
+if (global.reduxNativeDevTools) {
   devTools = global.reduxNativeDevTools
 } else {
   devTools = RemoteReduxDevTools
