@@ -1,5 +1,5 @@
 import Welcome from './scenes/Welcome'
-import Login from './scenes/Login'
+import Login from './scenes/Login/LoginContainer'
 import Topic from './scenes/Topic'
 import Drip from './scenes/Drip/DripContainer'
 
