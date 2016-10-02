@@ -1,6 +1,6 @@
 import Welcome from './scenes/Welcome'
 import Login from './scenes/Login/LoginContainer'
-import Topic from './scenes/Topic'
+import Topic from './scenes/Topic/TopicContainer'
 import Drip from './scenes/Drip/DripContainer'
 
 export default {

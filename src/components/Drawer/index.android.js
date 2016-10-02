@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+import Immutable from 'immutable'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import _ from 'lodash'
 
@@ -24,7 +25,7 @@ class Drawer extends Component {
         onPress: () => {
           const { selectTopic, navigate } = this.props
           selectTopic(topic)
-          navigate.to('topic', topic.title, { topic }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
+          navigate.to('topic', topic.title, { topic: Immutable.fromJS(topic) }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
           drawerWrapper.closeDrawer()
         },
         onLongPress: () => {},
