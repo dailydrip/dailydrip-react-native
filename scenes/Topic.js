@@ -71,13 +71,11 @@ class Topic extends Component {
   static propTypes = {
     topic: ImmutablePropTypes.map.isRequired,
     fetchDrips: PropTypes.func,
-    onPress: PropTypes.func,
     navigate: PropTypes.object,
   }
 
   static defaultProps = {
     fetchDrips() {},
-    onPress() {},
   }
 
   constructor(props) {
@@ -165,10 +163,6 @@ const mapDispatchToProps = (dispatch) => {
       }).catch((error) => {
         console.log(error)
       })
-    },
-    onPress: (drip) => {
-      // NOTE: This should really just set the dripID, and it should reduce to the right one
-      dispatch(Actions.setDrip(drip))
     },
   }
 }

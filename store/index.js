@@ -2,7 +2,18 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { combineReducers } from 'redux-immutablejs'
 import * as storage from 'redux-storage'
 import createEngine from 'redux-storage-engine-reactnativeasyncstorage'
-import merger from 'redux-storage-merger-immutablejs';
+import merger from 'redux-storage-merger-immutablejs'
+import * as RemoteReduxDevTools from 'remote-redux-devtools'
+
+let devTools
+
+if(global.reduxNativeDevTools) {
+  devTools = global.reduxNativeDevTools
+} else {
+  devTools = RemoteReduxDevTools
+}
+
+import * as Loop from 'redux-loop'
 
 import Immutable from 'immutable'
 import * as reducers from './reducers'
@@ -27,6 +38,13 @@ const initialState = Immutable.fromJS({
   drip: null,
 })
 
-const store = createStore(reducer, initialState, applyMiddleware(loggerMiddleware, storageMiddleware))
+const enhancer = compose(
+  applyMiddleware(loggerMiddleware, storageMiddleware),
+  Loop.install(),
+  devTools()
+)
+
+const store = createStore(reducer, initialState, enhancer)
+devTools.updateStore(store)
 
 export default store
