@@ -1,10 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { combineReducers } from 'redux-immutablejs'
-import { Iterable } from 'immutable'
 
 import createLogger from 'redux-logger'
 const logger = createLogger({
-  stateTransformer: state => state && state.toJS()
+  stateTransformer: state => state && state.toJS(),
 })
 
 import Immutable from 'immutable'
@@ -14,7 +13,7 @@ const initialState = Immutable.fromJS({
   topics: {},
   selectedTopic: {}, // NOTE: This is presently intended to end up as just a map with a basic `id` key - this is because you can't do immutable ints and I wanted to use createReducer throughout, but it's probably dumb...
   drips: [],
-  drip: null
+  drip: null,
 })
 
 export default compose(
