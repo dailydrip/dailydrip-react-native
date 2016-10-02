@@ -39,6 +39,16 @@ class Drawer extends Component {
     const additionalItems = [
       {
         icon: 'face',
+        value: 'Topics',
+        active: false,
+        onPress: () => {
+          navigate.to('topics')
+          drawerWrapper.closeDrawer()
+        },
+        onLongPress: () => {},
+      },
+      {
+        icon: 'face',
         value: 'Log Out',
         active: false,
         onPress: () => {
