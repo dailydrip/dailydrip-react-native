@@ -3,7 +3,7 @@ import { combineReducers } from 'redux-immutablejs'
 import * as storage from 'redux-storage'
 import createEngine from 'redux-storage-engine-reactnativeasyncstorage'
 import merger from 'redux-storage-merger-immutablejs'
-import * as RemoteReduxDevTools from 'remote-redux-devtools'
+import RemoteReduxDevTools from 'remote-redux-devtools'
 
 let devTools
 
