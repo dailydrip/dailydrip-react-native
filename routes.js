@@ -1,29 +1,34 @@
+import Welcome from './scenes/Welcome'
+import Login from './scenes/Login'
+import Topic from './scenes/Topic'
+import Drip from './scenes/Drip'
+
 export default {
   welcome: {
     initialRoute: true,
 
     title: 'Welcome',
-    component: require('./scenes/Welcome').default
+    component: Welcome,
   },
 
   login: {
     initialRoute: false,
 
     title: 'Login',
-    component: require('./scenes/Login').default
+    component: Login,
   },
 
   topic: {
     initialRoute: false,
 
     title: 'Topic',
-    component: require('./scenes/Topic').default
+    component: Topic,
   },
 
   drip: {
     initialRoute: false,
 
     title: 'Drip',
-    component: require('./scenes/Drip').default
-  }
+    component: Drip,
+  },
 }
