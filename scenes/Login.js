@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { View, StyleSheet, TextInput, AsyncStorage, Image } from 'react-native'
 import { Button } from 'react-native-material-design'
-import API from '../api/DailyDripApi'
+import API from '../api'
 import Actions from '../actions'
 import { connect } from 'react-redux'
 

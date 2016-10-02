@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import Immutable from 'immutable'
 import ImmutablePropTypes from 'react-immutable-proptypes'
-import API from '../api/DailyDripApi'
+import API from '../api'
 import Actions from '../actions'
 import { connect } from 'react-redux'
 import { white } from '../utils/colors'

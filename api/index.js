@@ -19,7 +19,7 @@ let authedInstance = function authedInstance(){
   })
 }
 
-let DailyDrip = {
+export default {
   login: function login(email, password){
     return instance.post(loginUrl, {
       email: email,
@@ -36,5 +36,3 @@ let DailyDrip = {
     return authedInstance().then((instance) => { return instance.get(dripsUrl) } )
   }
 }
-
-export default DailyDrip

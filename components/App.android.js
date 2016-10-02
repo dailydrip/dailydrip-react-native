@@ -15,13 +15,13 @@ import Navigate from '../utils/Navigate'
 import Toolbar from './Toolbar'
 import Drawer from './Drawer/Drawer'
 import { connect } from 'react-redux'
-import API from '../api/DailyDripApi'
+import API from '../api'
 import Actions from '../actions'
 
 class App extends Component {
 	static childContextTypes = {
 		drawer: React.PropTypes.object,
-		navigator: React.PropTypes.object
+		navigator: React.PropTypes.object,
 	}
 
 	constructor(props) {
