@@ -25,19 +25,21 @@ export default {
 
     title: 'Topics',
     component: Topics,
-  },
+    children: {
+      topic: {
+        initialRoute: false,
 
-  topic: {
-    initialRoute: false,
+        title: 'Topic',
+        component: Topic,
+        children: {
+          drip: {
+            initialRoute: false,
 
-    title: 'Topic',
-    component: Topic,
-  },
-
-  drip: {
-    initialRoute: false,
-
-    title: 'Drip',
-    component: Drip,
+            title: 'Drip',
+            component: Drip,
+          },
+        },
+      },
+    },
   },
 }

@@ -93,10 +93,9 @@ class Topic extends Component {
     return topic.get('drips') ? topic.get('drips').toJS() : []
   }
 
-
   navigateToDrip(drip) {
     const { navigate } = this.props
-    navigate.to('drip', drip.title, { id: drip.id })
+    navigate.to('topics.topic.drip', drip.title, { id: drip.id })
   }
 
   renderRow(rowData) {

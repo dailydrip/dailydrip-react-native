@@ -95,7 +95,7 @@ class App extends Component {
       {drawer &&
         <Navigator
           initialRoute={Navigate.getInitialRoute()}
-          navigationBar={<Toolbar onIconPress={drawer.openDrawer} theme="googleBlue" />}
+          navigationBar={<Toolbar navigator={this.state.navigator} onIconPress={drawer.openDrawer} theme="googleBlue" />}
           configureScene={() => {
             return Navigator.SceneConfigs.FloatFromBottomAndroid // FIXME: This clearly does nothing...
           }}

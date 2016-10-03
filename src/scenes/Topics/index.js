@@ -107,14 +107,14 @@ class Topics extends Component {
 
   navigateToTopic(topic) {
     const { navigate } = this.props
-    navigate.to('topic', topic.title, { id: topic.id })
+    navigate.to('topics.topic', topic.title, { id: topic.id })
   }
 
   renderRow(topic) {
     let onPress = () => {
       const { selectTopic, navigate } = this.props
       selectTopic(topic)
-      navigate.to('topic', topic.title, { topic: Immutable.fromJS(topic) }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
+      navigate.to('topics.topic', topic.title, { topic: Immutable.fromJS(topic) }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
     }
 
     return (

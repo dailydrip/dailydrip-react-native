@@ -128,6 +128,7 @@ export default class Navigate {
    * @param props
    */
   to = (path, title, props) => {
+    console.log('to', path)
     if (!path) {
       console.warn('[Navigate.to(undefined)] A route path is required to navigate to')
     } else {
@@ -138,6 +139,7 @@ export default class Navigate {
         console.warn(`[Navigate.to(${path})] No component exists at this path`)
       } else {
         this.isChild = path.split('.').length > 1
+        console.log('isChild', this.isChild)
         if (!title) {
           routeTitle = (obj.title ? obj.title : path)
         }
