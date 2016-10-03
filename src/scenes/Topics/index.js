@@ -5,6 +5,7 @@ import Immutable from 'immutable'
 import { color } from 'react-native-material-design-styles'
 import { ecstasy } from '../../utils/colors'
 
+const elmLogo = require('../../../assets/images/elm_white.png')
 const iconWidth = 40
 
 import {
@@ -38,6 +39,14 @@ const styles = StyleSheet.create({
     borderRadius: iconWidth / 2,
     backgroundColor: color.googleBlue500.color,
     marginRight: 20,
+  },
+  icon: {
+    width: iconWidth - 20,
+    height: iconWidth - 20,
+    top: 10,
+    left: 10,
+    right: 10,
+    bottom: 10,
   },
   title: {
     flex: 1,
@@ -101,7 +110,7 @@ class Topics extends Component {
         <TouchableHighlight onPress={onPress}>
           <View style={styles.item}>
             <View style={styles.iconContainer}>
-              <Image source={{ uri: 'https://www.dailydrip.com/assets/topic_logos/elm_white-e9f362eb364072ada231cf45c9cbeb5630c81708b33cca6223b75d3bf8c01b34.png' }} />
+              <Image style={styles.icon} source={elmLogo} />
             </View>
             <View style={styles.detailsContainer}>
               <View style={styles.title}>
