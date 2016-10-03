@@ -5,9 +5,6 @@ import Immutable from 'immutable'
 import { color } from 'react-native-material-design-styles'
 import { ecstasy } from '../../utils/colors'
 
-const elmLogo = require('../../../assets/images/elm_white.png')
-const iconWidth = 40
-
 import {
   StyleSheet,
   View,
@@ -16,6 +13,21 @@ import {
   ListView,
   TouchableHighlight,
 } from 'react-native'
+
+const elmLogo = require('../../../assets/images/elm_white.png')
+const elixirLogo = require('../../../assets/images/elixir_white.png')
+const htmlLogo = require('../../../assets/images/html5_white.png')
+const sidekiqLogo = require('../../../assets/images/sidekiq_white.png')
+const iconWidth = 40
+
+const logos = {
+  Elm: elmLogo,
+  Elixir: elixirLogo,
+  Sidekiq: sidekiqLogo,
+  'HTML + CSS': htmlLogo,
+  'Elm Remote Meetup': elmLogo,
+  'Elixir Remote Meetup': elixirLogo,
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -110,7 +122,7 @@ class Topics extends Component {
         <TouchableHighlight onPress={onPress}>
           <View style={styles.item}>
             <View style={styles.iconContainer}>
-              <Image style={styles.icon} source={elmLogo} />
+              <Image style={styles.icon} source={logos[topic.title] || elmLogo} />
             </View>
             <View style={styles.detailsContainer}>
               <View style={styles.title}>
