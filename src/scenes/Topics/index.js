@@ -11,54 +11,54 @@ import {
   StyleSheet,
   View,
   Text,
+  Image,
   ListView,
-  Platform,
   TouchableHighlight,
 } from 'react-native'
 
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
-    paddingTop: 20,
   },
   item: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     flex: 1,
+    paddingLeft: 10,
     paddingTop: 10,
-    paddingLeft: 20,
-    paddingBottom: 20,
-    paddingRight: 20,
+    paddingBottom: 10,
   },
   container: {
     flex: 1,
     alignItems: 'stretch',
-    marginTop: Platform.OS === 'android' ? 56 : 0,
   },
   iconContainer: {
     width: iconWidth,
     height: iconWidth,
     borderRadius: iconWidth / 2,
     backgroundColor: color.googleBlue500.color,
-    marginRight: 30,
+    marginRight: 20,
+  },
+  title: {
+    flex: 1,
+    flexDirection: 'row',
   },
   titleText: {
     color: ecstasy,
     fontSize: 20,
-    flex: 1,
+    marginRight: 10,
   },
   titleRuler: {
     height: 1,
-    backgroundColor: '#ff0000',
+    flex: 1,
+    marginTop: 14,
+    backgroundColor: color.googleBlue500.color,
   },
   description: {
-    flex: 1,
+    paddingRight: 10,
   },
   detailsContainer: {
-    flexDirection: 'column',
-    flexWrap: 'wrap',
     flex: 1,
-    justifyContent: 'flex-start',
   },
 })
 
@@ -101,10 +101,13 @@ class Topics extends Component {
         <TouchableHighlight onPress={onPress}>
           <View style={styles.item}>
             <View style={styles.iconContainer}>
-              <Text>foo</Text>
+              <Image source={{ uri: 'https://www.dailydrip.com/assets/topic_logos/elm_white-e9f362eb364072ada231cf45c9cbeb5630c81708b33cca6223b75d3bf8c01b34.png' }} />
             </View>
             <View style={styles.detailsContainer}>
-              <Text style={styles.titleText}>{topic.title}</Text>
+              <View style={styles.title}>
+                <Text style={styles.titleText}>{topic.title}</Text>
+                <View style={styles.titleRuler} />
+              </View>
               <Text style={styles.description} numberOfLines={3}>{topic.description}</Text>
             </View>
           </View>

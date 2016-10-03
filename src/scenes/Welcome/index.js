@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import { Alert } from 'react-native'
-import OurAppIntro from '../utils/AppIntro'
-import { havelockBlue, white, textGrey, ecstasy } from '../utils/colors'
+import React, { Component, PropTypes } from 'react'
+import OurAppIntro from '../../utils/AppIntro'
+import { havelockBlue, white, textGrey, ecstasy } from '../../utils/colors'
 
 const customStyles = {
   title: {
@@ -16,19 +15,15 @@ const customStyles = {
 }
 
 class Welcome extends Component {
-  onSkipBtnHandle = (index) => {
-    Alert.alert('skip')
-    console.log(index)
+  static contextTypes = {
+    navigator: PropTypes.object,
   }
-  onSlideChangeHandle = (index, total) => {
-    console.log(index, total)
-  }
-  nextBtnHandle = (index) => {
-    Alert.alert('Next')
-    console.log(index)
+
+  onSkipBtnHandle = () => {
+    this.context.navigator.to('topics')
   }
   doneBtnHandle = () => {
-    Alert.alert('Done')
+    this.context.navigator.to('topics')
   }
 
   render() {
