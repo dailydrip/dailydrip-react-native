@@ -35,11 +35,11 @@ export const storageLoader = storage.createLoader(storageEngine)
 const initialState = Immutable.fromJS({
   topics: {},
   selectedTopic: {}, // NOTE: This is presently intended to end up as just a map with a basic `id` key - this is because you can't do immutable ints and I wanted to use createReducer throughout, but it's probably dumb...
-  drip: null,
 })
 
 const enhancer = compose(
-  applyMiddleware(loggerMiddleware, storageMiddleware),
+  //applyMiddleware(loggerMiddleware, storageMiddleware),
+  applyMiddleware(storageMiddleware),
   Loop.install(),
   devTools()
 )

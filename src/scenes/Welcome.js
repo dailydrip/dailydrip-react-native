@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import OurAppIntro from '../utils/AppIntro'
-import { havelockBlue, white, textGrey } from '../utils/colors'
+import { havelockBlue, white, textGrey, ecstasy } from '../utils/colors'
 
 const customStyles = {
   title: {
@@ -80,8 +80,11 @@ class Welcome extends Component {
         onSlideChange={this.onSlideChangeHandle}
         showSkipButton
         showDoneButton
+        showDots
         pageArray={pageArray}
         customStyles={customStyles}
+        dotColor={havelockBlue}
+        activeDotColor={ecstasy}
       />
     )
   }

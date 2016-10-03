@@ -10,6 +10,7 @@ export default {
 
     title: 'Welcome',
     component: Welcome,
+    hideHeader: true,
   },
 
   login: {

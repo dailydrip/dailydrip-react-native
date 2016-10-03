@@ -17,7 +17,7 @@ class OurAppIntro extends AppIntro {
     const AnimatedStyle2 = this.getTransform(index, 0, level)
     const AnimatedStyle3 = this.getTransform(index, 15, level)
     const pageView = (
-      <View style={[this.styles.slide, { padding: 10, backgroundColor }]} showsPagination={false} key={index}>
+      <View style={[this.styles.slide, { padding: 10, backgroundColor }]} key={index}>
         <Animated.View style={[this.styles.header, ...AnimatedStyle1.transform]}>
           <Image style={imgStyle} source={{ uri: img }} />
         </Animated.View>

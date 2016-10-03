@@ -50,7 +50,6 @@ class App extends Component {
   }
 
   setNavigator = (navigator) => {
-    console.log('setNavigator', navigator)
     const navigate = new Navigate(navigator)
     this.setState({
       navigator: navigate,
@@ -98,7 +97,7 @@ class App extends Component {
           initialRoute={Navigate.getInitialRoute()}
           navigationBar={<Toolbar onIconPress={drawer.openDrawer} theme="googleBlue" />}
           configureScene={() => {
-            return Navigator.SceneConfigs.FadeAndroid
+            return Navigator.SceneConfigs.FloatFromBottomAndroid // FIXME: This clearly does nothing...
           }}
           ref={(navigatorRef) => {
             if (!navigator && navigatorRef) {
@@ -111,7 +110,7 @@ class App extends Component {
             if (navigator && route.component) {
               returnedView = (
                 <View
-                  style={styles.scene}
+                  style={[styles.scene, (route.hideHeader ? { marginTop: 0 } : {})]}
                   showsVerticalScrollIndicator={false}
                 >
                   <route.component navigate={this.state.navigator} title={route.title} path={route.path} {...route.props} />
