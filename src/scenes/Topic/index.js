@@ -8,7 +8,6 @@ import {
   Text,
   StyleSheet,
   ListView,
-  Platform,
 } from 'react-native'
 
 import {
@@ -43,22 +42,15 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingTop: 16,
     paddingBottom: 16,
+    minHeight: 80,
   },
   cardTeaserText: {
-    fontSize: 16,
+    fontSize: 18,
   },
   scrollView: {
-    flex: 1,
-  },
-  item: {
-    flex: 1,
-    marginTop: 4,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'stretch',
-    padding: 20,
-    marginTop: Platform.OS === 'android' ? 56 : 0,
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 })
 
