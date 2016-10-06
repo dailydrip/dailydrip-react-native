@@ -6,6 +6,8 @@ import {
 } from 'react-native'
 import Swiper from 'react-native-swiper'
 import { havelockBlue, white, textGrey } from '../../utils/colors'
+import StripeAndroid from '../../modules/native/StripeAndroid'
+import ButtonAndroid from '../../modules/native/ButtonAndroid'
 
 const backgroundScreen1 = require('../../../assets/images/welcome/screen1.png')
 const backgroundScreen2 = require('../../../assets/images/welcome/screen2.png')
@@ -160,9 +162,11 @@ const Welcome = (_props, context) => (
         </View>
       </View>
     </Swiper>
-    <Text style={styles.skip} onPress={() => { context.navigator.to('topics') }}>SKIP</Text>
+    <Text style={styles.skip} onPress={() => { StripeAndroid.show('foo', StripeAndroid.SHORT); context.navigator.to('topics') }}>SKIP</Text>
   </View>
 )
+//<ButtonAndroid text={'foo'} style={styles.skip} />
+// If I place this where the 'text' is above, I can sort of see it as a single pixel in the view...very odd
 
 Welcome.contextTypes = {
   navigator: PropTypes.object.isRequired,

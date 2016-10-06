@@ -130,6 +130,11 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+    compile 'com.stripe:stripe-android:+' // stripe android pay stuff
+    compile 'com.google.android.gms:play-services-wallet:9.4.0'
+    compile 'com.android.support:support-v4:24.1.1'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+
 }
 
 // Run this once to be able to run the application with BUCK

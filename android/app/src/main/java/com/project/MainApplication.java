@@ -17,27 +17,28 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    protected boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        protected boolean getUseDeveloperSupport() {
+            return BuildConfig.DEBUG;
+        }
+
+        @Override
+        protected List<ReactPackage> getPackages() {
+            // Set max database size to 50MB since we store....a lot of stuff
+            long size = 50L * 1024L * 1024L; // 50 MB
+            ReactDatabaseSupplier.getInstance(getApplicationContext()).setMaximumSize(size);
+
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new ReactVideoPackage(),
+                    new StripePackage()
+            );
+        }
+    };
 
     @Override
-    protected List<ReactPackage> getPackages() {
-      // Set max database size to 50MB since we store....a lot of stuff
-      long size = 50L * 1024L * 1024L; // 50 MB
-      ReactDatabaseSupplier.getInstance(getApplicationContext()).setMaximumSize(size);
-
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new ReactVideoPackage()
-      );
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
     }
-  };
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
-  }
 }

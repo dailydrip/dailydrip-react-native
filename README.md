@@ -2,6 +2,11 @@
 
 This is the upcoming DailyDrip remote app, using React Native.
 
+## TODO
+
+- [ ] Check for google play services APK on launch of the app or at least when
+  we try to do google pay stuff, or Bad Things (crashes)
+
 ## Lint
 
 We'd like to lint our application nicely for consistency, and to avoid stupid
