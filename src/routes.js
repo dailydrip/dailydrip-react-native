@@ -3,6 +3,7 @@ import Login from './scenes/Login/LoginContainer'
 import Topic from './scenes/Topic/TopicContainer'
 import Topics from './scenes/Topics/TopicsContainer'
 import Drip from './scenes/Drip/DripContainer'
+import GetStarted from './scenes/GetStarted'
 
 export default {
   welcome: {
@@ -18,6 +19,13 @@ export default {
 
     title: 'Login',
     component: Login,
+  },
+
+  getStarted: {
+    initialRoute: false,
+
+    title: 'Get Started',
+    component: GetStarted,
   },
 
   topics: {

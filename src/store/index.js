@@ -19,10 +19,10 @@ import Immutable from 'immutable'
 import * as reducers from './reducers'
 
 // LOG OUT STATE CHANGES
-import createLogger from 'redux-logger'
-const loggerMiddleware = createLogger({
-  stateTransformer: state => state && state.toJS(),
-})
+// import createLogger from 'redux-logger'
+// const loggerMiddleware = createLogger({
+//   stateTransformer: state => state && state.toJS(),
+// })
 // END LOG OUT STATE CHANGES
 
 // STORE REDUX STATE
@@ -38,7 +38,7 @@ const initialState = Immutable.fromJS({
 })
 
 const enhancer = compose(
-  //applyMiddleware(loggerMiddleware, storageMiddleware),
+  // applyMiddleware(loggerMiddleware, storageMiddleware),
   applyMiddleware(storageMiddleware),
   Loop.install(),
   devTools()
