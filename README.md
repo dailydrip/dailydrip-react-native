@@ -41,3 +41,8 @@ brew update && brew cask install react-native-debugger
 
 Then you can just run the app and run the native debugger and debugging is
 glorious.
+
+### License
+
+Distribution of this software is governed by the BSD 3-Clause license.  See
+the LICENSE file for the text of the license.
