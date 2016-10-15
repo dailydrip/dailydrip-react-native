@@ -2,6 +2,10 @@
 
 This is the upcoming DailyDrip remote app, using React Native.
 
+Presently it's mostly-functional but the Drip Show screen still needs work, and
+we need to add account management features and payment capability.  So this is
+not yet released as our official app, but soon!
+
 ## Lint
 
 We'd like to lint our application nicely for consistency, and to avoid stupid
