@@ -368,9 +368,9 @@
 		};
 /* End PBXNativeTarget section */
 
-/* Begin PBXDailyDrip section */
+/* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* DailyDrip object */ = {
-			isa = PBXDailyDrip;
+			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
@@ -381,7 +381,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXDailyDrip "DailyDrip" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DailyDrip" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -395,47 +395,47 @@
 			projectReferences = (
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
-					DailyDripRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
+					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
-					DailyDripRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
+					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
-					DailyDripRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
 				},
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
-					DailyDripRef = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+					ProjectRef = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
-					DailyDripRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
-					DailyDripRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
+					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 				},
 				{
 					ProductGroup = 832341B11AAA6A8300B99B32 /* Products */;
-					DailyDripRef = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
+					ProjectRef = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302E01ABCB9EE00DB3ED1 /* Products */;
-					DailyDripRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
+					ProjectRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
 				},
 				{
 					ProductGroup = E134381C1E16EF630084C122 /* Products */;
-					DailyDripRef = 91E8D8238C584D5E95B7FDE2 /* RCTVideo.xcodeproj */;
+					ProjectRef = 91E8D8238C584D5E95B7FDE2 /* RCTVideo.xcodeproj */;
 				},
 				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
-					DailyDripRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 				},
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
-					DailyDripRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -444,7 +444,7 @@
 				00E356ED1AD99517003FC87E /* DailyDripTests */,
 			);
 		};
-/* End PBXDailyDrip section */
+/* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
 		00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */ = {
@@ -792,7 +792,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXDailyDrip "DailyDrip" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DailyDrip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
