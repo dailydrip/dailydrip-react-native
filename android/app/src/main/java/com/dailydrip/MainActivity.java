@@ -1,4 +1,4 @@
-package com.project;
+package com.dailydrip;
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -9,6 +9,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "Project";
+        return "DailyDrip";
     }
 }

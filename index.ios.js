@@ -11,7 +11,7 @@ import store, { storageLoader } from './src/store'
 
 import AppViewContainer from './src/modules/AppViewContainer'
 
-class Project extends Component {
+class DailyDrip extends Component {
   componentWillMount() {
     // Load existing store state from async storage
     console.log('loading storage')
@@ -29,4 +29,4 @@ class Project extends Component {
   }
 }
 
-AppRegistry.registerComponent('Project', () => Project)
+AppRegistry.registerComponent('DailyDrip', () => DailyDrip)

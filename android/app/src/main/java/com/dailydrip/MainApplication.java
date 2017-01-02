@@ -1,4 +1,4 @@
-package com.project;
+package com.dailydrip;
 
 import android.app.Application;
 import android.util.Log;
