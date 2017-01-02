@@ -25,7 +25,7 @@ class Drawer extends Component {
         onPress: () => {
           const { selectTopic, navigate } = this.props
           selectTopic(topic)
-          navigate.to('topic', topic.title, { topic: Immutable.fromJS(topic) }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
+          navigate.to('topics.topic', topic.title, { topic: Immutable.fromJS(topic) }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
           drawerWrapper.closeDrawer()
         },
         onLongPress: () => {},
