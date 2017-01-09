@@ -26,6 +26,7 @@ class Drawer extends Component {
 
         onPress: () => {
           const { selectTopic, navigate } = this.props
+          debugger
           selectTopic(topic)
           navigate.to('topics.topic', topic.title, { topic: Immutable.fromJS(topic) }) // TODO: We will want to switch to NavigationExperimental sigh :)  This should be declarative "data-down" style or I'll cry forever
           drawerWrapper.closeDrawer()
