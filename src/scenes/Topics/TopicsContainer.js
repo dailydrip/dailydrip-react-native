@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Topics from './index'
-import Actions from '../../actions'
+import { Actions } from '../../actions'
 
 const mapStateToProps = (state) => {
   const topics = state.get('topics')

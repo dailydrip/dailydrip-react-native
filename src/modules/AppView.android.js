@@ -58,9 +58,10 @@ class App extends Component {
   }
 
   checkAuth(navigate) {
+    let { fetchTopics } = this.props
     AsyncStorage.getItem('auth_token').then((value) => {
       if (value) {
-        this.props.fetchTopics()
+        fetchTopics()
       } else {
         if (navigate) {
           navigate.to('login')

@@ -3,6 +3,7 @@ export const FETCH_DRIPS = 'FETCH_DRIPS'
 export const SET_TOPICS = 'SET_TOPICS'
 export const SET_DRIPS = 'SET_DRIPS'
 export const SELECT_TOPIC = 'SELECT_TOPIC'
+export const NO_OP = 'NO_OP'
 
 const setTopics = (topics) => {
   return {
@@ -40,10 +41,16 @@ const selectTopic = (topicId) => {
   }
 }
 
-const Actions = {
+const noOp = () => {
+  return {
+    type: NO_OP
+  }
+}
+
+export const Actions = {
   setTopics,
   setDrips,
   selectTopic,
+  fetchTopics,
+  fetchDrips
 }
-
-export default Actions

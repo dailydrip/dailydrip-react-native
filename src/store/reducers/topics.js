@@ -1,71 +1,87 @@
-import { createReducer } from 'redux-immutablejs'
 import Immutable from 'immutable'
-import { FETCH_TOPICS, FETCH_DRIPS, SET_TOPICS, SET_DRIPS } from '../../actions'
+import { Actions, SET_TOPICS, SET_DRIPS, FETCH_TOPICS, FETCH_DRIPS } from '../../actions'
 import { loop, Effects } from 'redux-loop';
 import API from '../../api'
 
-function fetchTopics(){
-  API.getTopics().then((response) => {
-    const topicsMap = response.data.topics.reduce((acc, topic) => {
-      return acc.set(topic.id, Immutable.fromJS(topic))
-    }, Immutable.Map())
-    return Actions.setTopics(topicsMap)
-  }).catch((error) => {
-    console.log(error)
-  })
+
+let fetchTopics = () => (
+  API.getTopics()
+    .then((response) => {
+      return Actions.setTopics(
+        response.data.topics
+          .reduce((acc, topic) => {
+            return acc
+              .set(topic.id, Immutable.fromJS(topic))
+          }, Immutable.Map())
+      )
+    })
+    .catch((err) => {
+      console.error(err)
+      return Actions.noOp()
+    })
+)
+
+let fetchDrips = (topicId) => {
+  return API.getDrips(topicId)
+    .then((response) => {
+      return Actions.setDrips(
+        topicId,
+        response.data.drips
+          .reduce((acc, drip) => (
+            acc.set(drip.id, Immutable.fromJS(drip))
+          ), Immutable.Map())
+      )})
+    .catch((err) => {
+      console.error(err)
+      return Actions.noOp()
+    })
 }
 
-function fetchDrips(topicId){
-  API.getDrips(topicId).then((response) => {
-    const dripsMap = response.data.drips.reduce((acc, drip) => {
-      return acc.set(drip.id, Immutable.fromJS(drip))
-    }, Immutable.Map())
-    return Actions.setDrips(topicId, dripsMap)
-  }).catch((error) => {
-    console.log(error)
-  })
-}
-
-export default createReducer(Immutable.Map(), {
-  [FETCH_TOPICS]: (state, action) => {
-    return loop( 
-        state.set('loading', true),
+export default function(state, action){
+  switch (action.type) {
+    case FETCH_TOPICS:
+      return loop(
+        state,
         Effects.promise(fetchTopics)
       )
-  },
 
-  [SET_TOPICS]: (state, action) => {
-    const topics = action.topics.map((topic) => {
-      // Look in the store and pull in any drips we already know about, since
-      // we don't have them here but we'd like to keep them for faster startup
-      // from storage
-      const existingTopic = state.get(topic.get('id').toString())
-      let newTopic
-      if (existingTopic) {
-        newTopic = topic.set('drips', existingTopic.get('drips'))
-      } else {
-        newTopic = topic
-      }
-      return newTopic
-    })
+    case SET_TOPICS:
+      const topics = action.topics.map((topic) => {
+        // Look in the store and pull in any drips we already know about, since
+        // we don't have them here but we'd like to keep them for faster startup
+        // from storage
+        const existingTopic = state.get(topic.get('id').toString())
+        let newTopic
+        if (existingTopic) {
+          newTopic = topic.set('drips', existingTopic.get('drips'))
+        } else {
+          newTopic = topic
+        }
+        return newTopic
+      })
+
     return loop(
-      state.set('topics', topics).set('loading', false),
+      topics,
       Effects.none()
     )
-  },
 
-  [FETCH_DRIPS]: (state, { topicId }) => {
+  case FETCH_DRIPS:
     return loop(
-      state.set('loading', true),
-      Effects.promise(fetchDrips(topicId))
+      state,
+      Effects.promise(fetchDrips, action.topicId)
     )
-  },
 
-  [SET_DRIPS]: (state, { topicId, drips }) => {
-    let newState = state.setIn([topicId, 'drips'], drips)
+  case SET_DRIPS:
     return loop(
-      newState.set('loading', false),
+      state
+        .setIn([action.topicId, 'drips'], action.drips),
       Effects.none()
     )
-  },
-})
+
+  default:
+    return loop(
+      state,
+      Effects.none()
+    )
+  }
+}

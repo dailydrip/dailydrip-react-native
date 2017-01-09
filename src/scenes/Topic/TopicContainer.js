@@ -1,6 +1,6 @@
 import Topic from './index'
 import { connect } from 'react-redux'
-import Actions from '../../actions'
+import { Actions } from '../../actions'
 import Immutable from 'immutable'
 
 const mapStateToProps = (state) => {
