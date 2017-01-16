@@ -1,7 +1,7 @@
 import Login from './index'
 import { connect } from 'react-redux'
 import API from '../../api'
-import Actions from '../../actions'
+import { Actions } from '../../actions'
 
 const mapStateToProps = () => {
   return {}

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Actions from '../../actions'
+import { Actions } from '../../actions'
 import Drawer from '../Drawer'
 
 const mapStateToProps = (state) => {

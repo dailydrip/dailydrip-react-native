@@ -14,10 +14,10 @@ import AppViewContainer from './src/modules/AppViewContainer'
 class DailyDrip extends Component {
   componentWillMount() {
     // Load existing store state from async storage
-    console.log('loading storage')
-    storageLoader(store)
-        .then((newState) => console.log('Loaded state:', newState))
-        .catch((e) => console.log('Failed to load previous state', e))
+    // console.log('loading storage')
+    // storageLoader(store)
+    //     .then((newState) => console.log('Loaded state:', newState))
+    //     .catch((e) => console.log('Failed to load previous state', e))
   }
 
   render() {
