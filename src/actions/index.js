@@ -1,5 +1,7 @@
 export const FETCH_TOPICS = 'FETCH_TOPICS'
 export const FETCH_DRIPS = 'FETCH_DRIPS'
+export const FETCH_USER_INFORMATION = 'FETCH_USER_INFORMATION'
+export const UPDATE_USER_INFORMATION = 'UPDATE_USER_INFORMATION'
 export const SET_TOPICS = 'SET_TOPICS'
 export const SET_DRIPS = 'SET_DRIPS'
 export const SELECT_TOPIC = 'SELECT_TOPIC'
@@ -17,6 +19,20 @@ const setDrips = (topicId, drips) => {
     type: SET_DRIPS,
     topicId,
     drips,
+  }
+}
+
+const updateUserInformation = (name, email) => {
+  return {
+    type: UPDATE_USER_INFORMATION,
+    name,
+    email,
+  }
+}
+
+const fetchUserInformation = () => {
+  return {
+    type: FETCH_USER_INFORMATION
   }
 }
 
@@ -50,7 +66,9 @@ const noOp = () => {
 export const Actions = {
   setTopics,
   setDrips,
+  updateUserInformation,
   selectTopic,
   fetchTopics,
+  fetchUserInformation,
   fetchDrips
 }

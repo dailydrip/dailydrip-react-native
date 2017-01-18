@@ -29,6 +29,12 @@ export default {
       device_type: 'ios',
     })
   },
+  getUserInformation: function getUserInformation(){
+    return { email: 'dailydrip@dailydrip.com', name: 'DailyDrip' }
+  },
+  updateUserInformation: function updateUserInformation(){
+
+  },
   getTopics: function getTopics() {
     return authedInstance().then((instance) => { return instance.get(topicsUrl) })
   },
