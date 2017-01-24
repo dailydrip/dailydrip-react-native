@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 import API from '../../api'
 import { Actions } from '../../actions'
 
-const mapStateToProps = () => {
-  return {}
+const mapStateToProps = (state) => {
+  const user = state.get('user')
+  return {
+    name: user.get('name'),
+    email: user.get('email')
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -14,7 +18,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateUserInformation: () => {
       dispatch(Actions.updateUserInformation())
-    }
+    },
+    setUserName: (name) => {
+      dispatch(Actions.setUserName(name))
+    },
+    setUserEmail: (email) => {
+      dispatch(Actions.setUserEmail(email))
+    },
   }
 }
 

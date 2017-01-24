@@ -3,7 +3,6 @@ import { Actions, SET_TOPICS, SET_DRIPS, FETCH_TOPICS, FETCH_DRIPS } from '../..
 import { loop, Effects } from 'redux-loop';
 import API from '../../api'
 
-
 let fetchTopics = () => (
   API.getTopics()
     .then((response) => {

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     left: 0,
     alignItems: 'center',
   },
-  loginInput: {
+  textInput: {
     height: 50,
     width: 300,
     padding: 4,
@@ -81,34 +81,28 @@ class Settings extends Component {
     navigate: PropTypes.object,
     fetchUserInformation: PropTypes.func,
     updateUserInformation: PropTypes.func,
+    setUserName: PropTypes.func,
+    setUserEmail: PropTypes.func,
   }
   static defaultProps = {}
 
   constructor(props) {
     super(props)
-    this.state = {
-      name: '',
-      email: '',
-    }
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit() {
-    this.props.updateUserInformation(this.state.name, this.state.email);
+    this.props.updateUserInformation()
   }
 
   handleChangeName(event) {
-    this.setState({
-      name: event.nativeEvent.text,
-    })
+    this.props.setUserName(event.nativeEvent.text)
   }
 
   handleChangeEmail(event) {
-    this.setState({
-      email: event.nativeEvent.text,
-    })
+    this.props.setUserEmail(event.nativeEvent.text)
   }
 
   componentWillMount() {
@@ -125,12 +119,12 @@ class Settings extends Component {
               autoFocus
               placeholder="Name"
               autoCapitalize="none"
-              style={styles.loginInput}
+              style={styles.textInput}
               onChange={this.handleChangeName}
               onSubmitEditing={() => this.refs.name.focus()}
               blurOnSubmit={false}
               returnKeyType="next"
-              value={this.state.login}
+              value={this.props.name}
             />
 
             <TextInput
@@ -138,13 +132,13 @@ class Settings extends Component {
               autoFocus
               placeholder="Email"
               autoCapitalize="none"
-              style={styles.loginInput}
+              style={styles.textInput}
               onChange={this.handleChangeEmail}
               onSubmitEditing={() => this.refs.email.focus()}
               blurOnSubmit={false}
               keyboardType="email-address"
               returnKeyType="next"
-              value={this.state.login}
+              value={this.props.email}
             />
 
             <View style={styles.buttons}>

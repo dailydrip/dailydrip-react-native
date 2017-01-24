@@ -34,7 +34,16 @@ const loggerMiddleware = createLogger({
 
 const initialState = Immutable.fromJS({
   topics: {},
-  selectedTopic: {}, // NOTE: This is presently intended to end up as just a map with a basic `id` key - this is because you can't do immutable ints and I wanted to use createReducer throughout, but it's probably dumb...
+
+  // NOTE: `selectedTopic` is presently intended to end up as just a map with a basic `id` key - this is because you can't do immutable ints and I wanted to use createReducer throughout, but it's probably dumb...
+  // TODO: Move this value into `topics` and put the topics data on a key inside
+  // that map.
+  selectedTopic: {},
+
+  user: {
+    name: '',
+    email: ''
+  }
 })
 
 console.log('initialState', initialState)

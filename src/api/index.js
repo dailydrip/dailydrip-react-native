@@ -30,10 +30,13 @@ export default {
     })
   },
   getUserInformation: function getUserInformation(){
-    return { email: 'dailydrip@dailydrip.com', name: 'DailyDrip' }
+    return Promise.resolve({
+      email: 'dailydrip@dailydrip.com',
+      name: 'DailyDrip'
+    })
   },
   updateUserInformation: function updateUserInformation(){
-
+    return Promise.resolve()
   },
   getTopics: function getTopics() {
     return authedInstance().then((instance) => { return instance.get(topicsUrl) })

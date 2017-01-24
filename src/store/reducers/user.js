@@ -1,14 +1,22 @@
+import { createReducer } from 'redux-immutablejs'
 import Immutable from 'immutable'
-import { Actions, UPDATE_USER_INFORMATION, FETCH_USER_INFORMATION } from '../../actions'
+import {
+  Actions,
+  UPDATE_USER_INFORMATION,
+  FETCH_USER_INFORMATION,
+  GOT_USER_INFORMATION,
+  SET_USER_NAME,
+  SET_USER_EMAIL,
+} from '../../actions'
 import { loop, Effects } from 'redux-loop';
 import API from '../../api'
-
 
 let fetchUserInformation = () => (
   API.getUserInformation()
     .then((response) => {
-      return Actions.setUserInformation(
-        response.data.name,response.data.email
+      return Actions.gotUserInformation(
+        response.name,
+        response.email
       )
     })
     .catch((err) => {
@@ -18,7 +26,7 @@ let fetchUserInformation = () => (
 )
 
 let updateUserInformation = (user) => (
-  API.updaUserInformation(user)
+  API.updateUserInformation(user)
     .then((response) => {
       return Actions.updatedUserInformation()
     })
@@ -27,24 +35,38 @@ let updateUserInformation = (user) => (
     })
 )
 
-export default function(state, action){
-  switch (action.type) {
+export default function reducer(state, action) {
+  switch(action.type) {
     case FETCH_USER_INFORMATION:
       return loop(
         state,
         Effects.promise(fetchUserInformation)
       )
     case UPDATE_USER_INFORMATION:
-      user = new User(name: action.payload[0], email: action.payload[2])
       return loop(
-        user,
-        Effects.promise(updateUserInformation(user))
+        state,
+        Effects.promise(updateUserInformation(state))
       )
-
-  default:
-    return loop(
-      state,
-      Effects.none()
-    )
+    case GOT_USER_INFORMATION:
+      return loop(
+        state
+          .set('name', action.name)
+          .set('email', action.email),
+        Effects.none()
+      )
+    case SET_USER_NAME:
+      return loop(
+        state
+          .set('name', action.name),
+        Effects.none()
+      )
+    case SET_USER_EMAIL:
+      return loop(
+        state
+          .set('email', action.email),
+        Effects.none()
+      )
+    default:
+      return state
   }
 }
