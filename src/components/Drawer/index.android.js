@@ -49,6 +49,16 @@ class Drawer extends Component {
       },
       {
         icon: 'face',
+        value: 'Settings',
+        active: false,
+        onPress: () => {
+          navigate.to('settings')
+          drawerWrapper.closeDrawer()
+        },
+        onLongPress: () => {},
+      },
+      {
+        icon: 'face',
         value: 'Log Out',
         active: false,
         onPress: () => {

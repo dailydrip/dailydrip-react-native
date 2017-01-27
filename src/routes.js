@@ -4,6 +4,7 @@ import Topic from './scenes/Topic/TopicContainer'
 import Topics from './scenes/Topics/TopicsContainer'
 import Drip from './scenes/Drip/DripContainer'
 import GetStarted from './scenes/GetStarted'
+import Settings from './scenes/Settings/SettingsContainer'
 
 export default {
   welcome: {
@@ -19,6 +20,13 @@ export default {
 
     title: 'Login',
     component: Login,
+  },
+
+  settings: {
+    initialRoute: false,
+
+    title: 'Settings',
+    component: Settings,
   },
 
   getStarted: {
