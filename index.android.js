@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import 'es6-symbol/implement'
 
 import {
   AppRegistry,
