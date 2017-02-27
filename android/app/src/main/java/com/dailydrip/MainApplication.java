@@ -3,14 +3,17 @@ package com.dailydrip;
 import android.app.Application;
 import android.util.Log;
 
-import com.brentvatne.react.ReactVideoPackage;
-
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.i18n.reactnativei18n.ReactNativeI18n;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.modules.storage.ReactDatabaseSupplier;
 import com.facebook.react.shell.MainReactPackage;
+import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,19 +28,25 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      // Set max database size to 50MB since we store....a lot of stuff
-      long size = 50L * 1024L * 1024L; // 50 MB
-      ReactDatabaseSupplier.getInstance(getApplicationContext()).setMaximumSize(size);
-
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new ReactVideoPackage()
+            new VectorIconsPackage(),
+            new MapsPackage(),
+            new ReactNativeI18n(),
+            new RNDeviceInfo(),
+            new ReactNativeConfigPackage()
       );
     }
   };
 
   @Override
   public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
+    return mReactNativeHost;
+  }
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    SoLoader.init(this, /* native exopackage */ false);
   }
 }
