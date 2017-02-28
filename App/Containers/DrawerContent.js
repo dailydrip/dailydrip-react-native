@@ -24,29 +24,9 @@ class DrawerContent extends Component {
     this.context.drawer.toggle()
   }
 
-  handlePressComponents = () => {
+  onPressDrawerButton = () => {
     this.toggleDrawer()
-    NavigationActions.componentExamples()
-  }
-
-  handlePressUsage = () => {
-    this.toggleDrawer()
-    NavigationActions.usageExamples()
-  }
-
-  handlePressAPI = () => {
-    this.toggleDrawer()
-    NavigationActions.apiTesting()
-  }
-
-  handlePressTheme = () => {
-    this.toggleDrawer()
-    NavigationActions.theme()
-  }
-
-  handlePressDevice = () => {
-    this.toggleDrawer()
-    NavigationActions.deviceInfo()
+    NavigationActions.listviewExample()
   }
 
   render () {
@@ -57,7 +37,7 @@ class DrawerContent extends Component {
       let description = topic.get('description')
       let dripCount = topic.get('drip_count')
 
-      return(<DrawerButton text={title} onPress={this.handlePressComponents} />)
+      return(<DrawerButton text={title} onPress={this.onPressDrawerButton} />)
     })
 
     return (
