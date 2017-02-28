@@ -11,7 +11,7 @@ import { Actions } from '../Redux/actions'
 import Immutable from 'immutable'
 
 // Styles
-import styles from './Styles/PresentationScreenStyle'
+import styles from './Styles/WelcomeScreenStyle'
 
 class PresentationScreen extends React.Component {
 
@@ -54,7 +54,7 @@ class PresentationScreen extends React.Component {
           {topicsRendered}
 
           <View style={styles.centered}>
-            <Text style={styles.subtitle}>Made with ❤️ by Infinite Red</Text>
+            <Text style={styles.subtitle}>Here you can just spend 5min a day and learn things.</Text>
           </View>
 
         </ScrollView>

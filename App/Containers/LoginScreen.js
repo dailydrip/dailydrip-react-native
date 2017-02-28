@@ -58,9 +58,6 @@ class LoginScreen extends React.Component {
   componentWillReceiveProps (newProps) {
     this.forceUpdate()
     // Did the login attempt complete?
-    if (this.isAttempting && !newProps.fetching) {
-      NavigationActions.presentationScreen({type: 'reset'})
-    }
   }
 
   componentWillMount () {
@@ -77,7 +74,7 @@ class LoginScreen extends React.Component {
 
   componentWillUpdate(nextProps, nextState) {
     if(nextState.username != undefined){
-      NavigationActions.presentationScreen({type: 'reset'})
+      NavigationActions.welcomeScreen({type: 'reset'})
     }
   }
 
@@ -106,7 +103,6 @@ class LoginScreen extends React.Component {
     // attempt a login - a saga is listening to pick it up from here.
     this.props.attemptLogin(username, password)
 
-    // NavigationActions.presentationScreen({type: 'reset'})
   }
 
   handleChangeUsername = (text) => {
