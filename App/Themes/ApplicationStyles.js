@@ -34,7 +34,7 @@ const ApplicationStyles = {
       borderBottomWidth: 1
     },
     sectionText: {
-      color: Colors.snow,
+      color: Colors.black,
       marginVertical: Metrics.smallMargin,
       textAlign: 'center',
       fontWeight: 'bold'

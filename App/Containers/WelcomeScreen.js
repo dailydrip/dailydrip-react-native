@@ -47,7 +47,7 @@ class PresentationScreen extends React.Component {
 
           <View style={styles.section} >
             <Text style={styles.sectionText} >
-              DAILYDRIP APP
+              Get your weekend back
             </Text>
           </View>
 
