@@ -34,8 +34,7 @@ const initialState = Immutable.fromJS({
 })
 
 const enhancer = compose(
-  Loop.install(),
-  devTools()
+  Loop.install()
 )
 
 
@@ -49,7 +48,5 @@ const store = createStore(
   initialState,
   enhancer
 )
-
-devTools.updateStore(store)
 
 export default store
