@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { ScrollView, Image, BackAndroid } from 'react-native'
 import styles from './Styles/DrawerContentStyle'
 import { Images } from '../Themes'
@@ -49,14 +50,20 @@ class DrawerContent extends Component {
   }
 
   render () {
+    const { topics } = this.props;
+
+    const buttonsRendered = topics.map((topic, id)=> {
+      let title = topic.get('title')
+      let description = topic.get('description')
+      let dripCount = topic.get('drip_count')
+
+      return(<DrawerButton text={title} onPress={this.handlePressComponents} />)
+    })
+
     return (
       <ScrollView style={styles.container}>
         <Image source={Images.logo} style={styles.logo} />
-        <DrawerButton text='Component Examples' onPress={this.handlePressComponents} />
-        <DrawerButton text='Usage Examples' onPress={this.handlePressUsage} />
-        <DrawerButton text='API Testing' onPress={this.handlePressAPI} />
-        <DrawerButton text='Themes' onPress={this.handlePressTheme} />
-        <DrawerButton text='Device Info' onPress={this.handlePressDevice} />
+        {buttonsRendered}
       </ScrollView>
     )
   }
@@ -67,4 +74,16 @@ DrawerContent.contextTypes = {
   drawer: React.PropTypes.object
 }
 
-export default DrawerContent
+const mapStateToProps = (state) => {
+  return {
+    topics: state.get('topics')
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTopics: () => { dispatch(Actions.fetchTopics()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent)
