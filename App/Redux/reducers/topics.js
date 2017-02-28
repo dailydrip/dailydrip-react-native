@@ -23,13 +23,14 @@ let fetchTopics = () => (
 let fetchDrips = (topicId) => {
   return API.getDrips(topicId)
     .then((response) => {
-      return Actions.setDrips(
-        topicId,
-        response.data.drips
+
+      const drips = response.data.drips
           .reduce((acc, drip) => (
             acc.set(drip.id, Immutable.fromJS(drip))
           ), Immutable.Map())
-      )})
+
+      return Actions.setDrips(topicId,drips)
+    })
     .catch((err) => {
       console.error(err)
       return Actions.noOp()

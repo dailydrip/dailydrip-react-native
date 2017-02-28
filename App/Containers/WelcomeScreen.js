@@ -19,10 +19,6 @@ class PresentationScreen extends React.Component {
     this.props.fetchTopics()
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    var topics = Immutable.fromJS(nextProps.topics);
-  }
-
   render () {
     const { topics } = this.props;
 

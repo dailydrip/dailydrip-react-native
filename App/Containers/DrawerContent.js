@@ -24,9 +24,9 @@ class DrawerContent extends Component {
     this.context.drawer.toggle()
   }
 
-  onPressDrawerButton = () => {
+  onPressDrawerButton = (topicId) => {
     this.toggleDrawer()
-    NavigationActions.listviewExample()
+    NavigationActions.dripsList({topicId})
   }
 
   render () {
@@ -34,10 +34,11 @@ class DrawerContent extends Component {
 
     const buttonsRendered = topics.map((topic, id)=> {
       let title = topic.get('title')
+      let topicId = topic.get('id')
       let description = topic.get('description')
       let dripCount = topic.get('drip_count')
 
-      return(<DrawerButton text={title} onPress={this.onPressDrawerButton} />)
+      return(<DrawerButton text={title} onPress={ ()=> this.onPressDrawerButton(topicId)} />)
     })
 
     return (

@@ -6,9 +6,10 @@ import { connect } from 'react-redux'
 
 // For empty lists
 import AlertMessage from '../Components/AlertMessage'
+import { Actions } from '../Redux/actions'
 
 // Styles
-import styles from './Styles/ListviewExampleStyle'
+import styles from './Styles/DripsListStyle'
 
 class ListviewExample extends React.Component {
   state: {
@@ -36,14 +37,6 @@ class ListviewExample extends React.Component {
       {title: 'Eleventh Title', description: 'Eleventh Description'},
       {title: '12th Title', description: '12th Description'},
       {title: '13th Title', description: '13th Description'},
-      {title: '14th Title', description: '14th Description'},
-      {title: '15th Title', description: '15th Description'},
-      {title: '16th Title', description: '16th Description'},
-      {title: '17th Title', description: '17th Description'},
-      {title: '18th Title', description: '18th Description'},
-      {title: '19th Title', description: '19th Description'},
-      {title: '20th Title', description: '20th Description'},
-      {title: 'BLACKJACK!', description: 'BLACKJACK! Description'}
     ]
 
     /* ***********************************************************
@@ -55,11 +48,11 @@ class ListviewExample extends React.Component {
     const rowHasChanged = (r1, r2) => r1 !== r2
 
     // DataSource configured
-    const ds = new ListView.DataSource({rowHasChanged})
+    this.ds = new ListView.DataSource({rowHasChanged})
 
     // Datasource is always in state
     this.state = {
-      dataSource: ds.cloneWithRows(dataObjects)
+      dataSource: this.ds.cloneWithRows(dataObjects)
     }
   }
 
@@ -104,7 +97,29 @@ class ListviewExample extends React.Component {
     return this.state.dataSource.getRowCount() === 0
   }
 
+  componentWillMount() {
+    const { topicId } = this.props
+    this.props.fetchDrips(topicId)
+  }
+
   render () {
+
+    const { topics } = this.props;
+    debugger;
+
+    var topicsRendered = topics.map((topic, id)=> {
+      let title = topic.get('title')
+      let description = topic.get('description')
+      let dripCount = topic.get('drip_count')
+      // TODO
+      let drips = topic.get('drips')
+
+      return(<View>
+            {title}
+          </View>
+        )
+    })
+
     return (
       <View style={styles.container}>
         <AlertMessage title='Nothing to See Here, Move Along' show={this.noRowData()} />
@@ -121,8 +136,14 @@ class ListviewExample extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    // ...redux state to props here
+    topics: state.get('topics')
   }
 }
 
-export default connect(mapStateToProps)(ListviewExample)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchDrips: (topicId) => { dispatch(Actions.fetchDrips(topicId)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListviewExample)
