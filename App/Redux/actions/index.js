@@ -82,6 +82,21 @@ const selectTopic = (topicId) => {
   }
 }
 
+const attemptLogin = (username, password) => {
+  return {
+    type:  'ATTEMPT_LOGIN',
+    username,
+    password
+  }
+}
+
+const logged = (username) => {
+  return {
+    type:  'LOGGED',
+    username
+  }
+}
+
 const noOp = () => {
   return {
     type: NO_OP
@@ -98,6 +113,8 @@ export const Actions = {
   gotUserInformation,
   setUserName,
   setUserEmail,
+  attemptLogin,
+  logged,
   fetchDrips
 }
 

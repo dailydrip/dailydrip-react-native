@@ -8,15 +8,17 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  AsyncStorage,
   Keyboard,
   LayoutAnimation
 } from 'react-native'
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyle'
 import {Images, Metrics} from '../Themes'
-import LoginActions from '../Redux/LoginRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import I18n from 'react-native-i18n'
+import API from '../Services/DailyDripApi'
+import { Actions } from '../Redux/actions'
 
 type LoginScreenProps = {
   dispatch: () => any,
@@ -44,19 +46,20 @@ class LoginScreen extends React.Component {
   constructor (props: LoginScreenProps) {
     super(props)
     this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
+      username: 'franzejr+test@gmail.com',
+      password: 'qqqqqqqq',
       visibleHeight: Metrics.screenHeight,
       topLogo: { width: Metrics.screenWidth }
     }
     this.isAttempting = false
+    this.handlePressLogin = this.handlePressLogin.bind(this)
   }
 
   componentWillReceiveProps (newProps) {
     this.forceUpdate()
     // Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
-      NavigationActions.pop()
+      NavigationActions.presentationScreen({type: 'reset'})
     }
   }
 
@@ -93,9 +96,11 @@ class LoginScreen extends React.Component {
 
   handlePressLogin = () => {
     const { username, password } = this.state
-    this.isAttempting = true
+    // this.isAttempting = true
     // attempt a login - a saga is listening to pick it up from here.
     this.props.attemptLogin(username, password)
+
+    // NavigationActions.presentationScreen({type: 'reset'})
   }
 
   handleChangeUsername = (text) => {
@@ -172,13 +177,13 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching
+    username: state.username
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
+    attemptLogin: (username, password) => {dispatch(Actions.attemptLogin(username, password))},
   }
 }
 

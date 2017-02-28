@@ -78,9 +78,6 @@ export default function(state, action){
     )
 
   default:
-    return loop(
-      state,
-      Effects.none()
-    )
+    return state
   }
 }

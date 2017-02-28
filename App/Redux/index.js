@@ -15,7 +15,7 @@ const initialState = Immutable.fromJS({
   // TODO: Move this value into `topics` and put the topics data on a key inside
   // that map.
   selectedTopic: {},
-
+  username: '',
   user: {
     name: '',
     email: ''
