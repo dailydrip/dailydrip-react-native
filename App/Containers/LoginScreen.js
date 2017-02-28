@@ -47,7 +47,7 @@ class LoginScreen extends React.Component {
     super(props)
     this.state = {
       username: 'franzejr+test@gmail.com',
-      password: 'qqqqqqqq',
+      password: 'qwe123qwe123',
       visibleHeight: Metrics.screenHeight,
       topLogo: { width: Metrics.screenWidth }
     }
@@ -73,6 +73,12 @@ class LoginScreen extends React.Component {
   componentWillUnmount () {
     this.keyboardDidShowListener.remove()
     this.keyboardDidHideListener.remove()
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if(nextState.username != undefined){
+      NavigationActions.presentationScreen({type: 'reset'})
+    }
   }
 
   keyboardDidShow = (e) => {
@@ -177,7 +183,7 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username
+    username: state.get('login').get('username')
   }
 }
 

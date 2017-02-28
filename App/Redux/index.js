@@ -7,6 +7,15 @@ import { createStore,
 import * as Loop from 'redux-loop'
 import Immutable from 'immutable'
 import * as reducers from './reducers'
+import RemoteReduxDevTools from 'remote-redux-devtools'
+
+let devTools
+
+if (global.reduxNativeDevTools) {
+  devTools = global.reduxNativeDevTools
+} else {
+  devTools = RemoteReduxDevTools
+}
 
 const initialState = Immutable.fromJS({
   topics: {},
@@ -15,7 +24,9 @@ const initialState = Immutable.fromJS({
   // TODO: Move this value into `topics` and put the topics data on a key inside
   // that map.
   selectedTopic: {},
-  username: '',
+  login: {
+    username: '',
+  },
   user: {
     name: '',
     email: ''
@@ -23,7 +34,8 @@ const initialState = Immutable.fromJS({
 })
 
 const enhancer = compose(
-  Loop.install()
+  Loop.install(),
+  devTools()
 )
 
 
@@ -37,5 +49,7 @@ const store = createStore(
   initialState,
   enhancer
 )
+
+devTools.updateStore(store)
 
 export default store
