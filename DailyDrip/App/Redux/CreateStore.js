@@ -1,45 +1,57 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { autoRehydrate } from 'redux-persist'
-import Config from '../Config/DebugConfig'
-import createSagaMiddleware from 'redux-saga'
-import RehydrationServices from '../Services/RehydrationServices'
-import ReduxPersist from '../Config/ReduxPersist'
+import { createStore,
+  applyMiddleware,
+  compose,
+  combineReducers } from 'redux'
+import RemoteReduxDevTools from 'remote-redux-devtools'
+import Immutable from 'immutable'
+import reducers from './reducers'
+import thunk from 'redux-thunk'
+import Reactotron from 'reactotron-react-native'
+import { persistStore, autoRehydrate } from 'redux-persist'
+import {AsyncStorage} from 'react-native'
+
+let devTools
+
+if (global.reduxNativeDevTools) {
+  devTools = global.reduxNativeDevTools
+} else {
+  devTools = RemoteReduxDevTools
+}
+
+import createLogger from 'redux-logger'
+const loggerMiddleware = createLogger({
+  stateTransformer: state => state && state.toJS()
+})
+
+const enhancer = compose(
+  applyMiddleware(thunk),
+  devTools(),
+  autoRehydrate({log: true})
+)
 
 // creates the store
-export default (rootReducer, rootSaga) => {
-  /* ------------- Redux Configuration ------------- */
+export default () => {
+  let dev = __DEV__
 
-  const middleware = []
-  const enhancers = []
+  let store = createStore(
+      reducers,
+      undefined,
+      enhancer
+    )
 
-  /* ------------- Saga Middleware ------------- */
-
-  const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null
-  const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
-  middleware.push(sagaMiddleware)
-
-  /* ------------- Assemble Middleware ------------- */
-
-  enhancers.push(applyMiddleware(...middleware))
-
-  /* ------------- AutoRehydrate Enhancer ------------- */
-
-  // add the autoRehydrate enhancer
-  if (ReduxPersist.active) {
-    enhancers.push(autoRehydrate())
+  if (dev) {
+    store = Reactotron.createStore(
+      reducers,
+      undefined,
+      enhancer
+    )
   }
 
-  // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
-  const createAppropriateStore = Config.useReactotron ? console.tron.createStore : createStore
-  const store = createAppropriateStore(rootReducer, compose(...enhancers))
-
-  // configure persistStore and check reducer version number
-  if (ReduxPersist.active) {
-    RehydrationServices.updateReducers(store)
-  }
-
-  // kick off root saga
-  sagaMiddleware.run(rootSaga)
-
+  devTools.updateStore(store)
+  // begin periodically persisting the store
+  //disable in debug mode -- running on V8
+  // https://github.com/rt2zz/redux-persist/issues/265
+  persistStore(store, {storage: AsyncStorage})
+  console.log('creating store', store)
   return store
 }
