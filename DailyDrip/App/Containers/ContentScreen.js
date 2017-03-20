@@ -5,7 +5,7 @@ import { Card, Text as TextElements } from 'react-native-elements'
 import { Images } from '../Themes'
 
 // Styles
-import styles from './Styles/LaunchScreenStyles'
+import styles from './Styles/ContentScreenStyles'
 
 export default class ContentScreen extends React.Component {
 

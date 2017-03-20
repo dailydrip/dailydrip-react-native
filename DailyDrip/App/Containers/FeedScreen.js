@@ -74,7 +74,6 @@ export default class FeedScreen extends React.Component {
     return (
       <View style={styles.container}>
       <View style={{alignItems:'center'}}>
-        <TextElements h4>Feed</TextElements>
       </View>
       <ScrollView>
           <ListView
