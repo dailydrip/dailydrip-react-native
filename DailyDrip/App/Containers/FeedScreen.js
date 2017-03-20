@@ -4,6 +4,7 @@ import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
 import { Card, Text as TextElements } from 'react-native-elements'
 import { Images } from '../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import Api from '../Services/DailyDripApi'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -44,12 +45,22 @@ export default class FeedScreen extends React.Component {
     const rowHasChanged = (r1, r2) => r1 !== r2
 
     // DataSource configured
-    const ds = new ListView.DataSource({rowHasChanged})
+    this.ds = new ListView.DataSource({rowHasChanged})
 
     // Datasource is always in state
     this.state = {
-      dataSource: ds.cloneWithRows(dataObjects)
+      dataSource: this.ds.cloneWithRows(dataObjects)
     }
+  }
+
+  componentWillMount() {
+    // pass the topic id here
+    Api.getDrips('10').then((response)=>{
+      // Datasource is always in state
+      this.setState({
+        dataSource: this.ds.cloneWithRows(response.data.drips)
+      })
+    })
   }
 
   renderRow (rowData) {
@@ -58,10 +69,10 @@ export default class FeedScreen extends React.Component {
         <Card
           title={rowData.title}>
           <Text style={{marginBottom: 10}}>
-            {rowData.description}
+            {rowData.teaser}
           </Text>
           <Button
-            onPress={() => NavigationActions.contentScreen()}
+            onPress={() => NavigationActions.contentScreen({drip: rowData})}
             backgroundColor='#03A9F4'
             style={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
             title='VIEW NOW' />
