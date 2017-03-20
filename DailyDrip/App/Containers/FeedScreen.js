@@ -3,6 +3,7 @@ import { ScrollView, Text, Image, View, ListView, Button } from 'react-native'
 import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
 import { Card, Text as TextElements } from 'react-native-elements'
 import { Images } from '../Themes'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -60,7 +61,7 @@ export default class FeedScreen extends React.Component {
             {rowData.description}
           </Text>
           <Button
-            onPress={() => console.log('clicked')}
+            onPress={() => NavigationActions.contentScreen()}
             backgroundColor='#03A9F4'
             style={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
             title='VIEW NOW' />

@@ -7,6 +7,7 @@ import NavigationDrawer from './NavigationDrawer'
 import LaunchScreen from '../Containers/LaunchScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import FeedScreen from '../Containers/FeedScreen'
+import ContentScreen from '../Containers/ContentScreen'
 
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
@@ -20,7 +21,8 @@ class NavigationRouter extends Component {
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
             <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='loginScreen' component={LoginScreen} title='LoginScreen' hideNavBar />
-            <Scene initial key='feedScreen' component={FeedScreen} title='LoginScreen' hideNavBar />
+            <Scene initial key='feedScreen' component={FeedScreen} title='Feed' />
+            <Scene key='contentScreen' component={ContentScreen} title='ContentScreen'/>
           </Scene>
         </Scene>
       </Router>
