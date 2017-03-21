@@ -44,6 +44,12 @@ const ApplicationStyles = {
       ...Fonts.style.h2,
       fontSize: 14,
       color: Colors.text
+    },
+    rowLine: {
+      flexDirection: 'row'
+    },
+    justifyCenter: {
+      justifyContent: 'center'
     }
   },
   darkLabelContainer: {
