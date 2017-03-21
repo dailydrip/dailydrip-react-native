@@ -2,6 +2,11 @@
 #
 .DS_Store
 
+AirshipConfig.plist
+
+DailyDrip/ios/AirshipConfig.plist
+DailyDrip/android/app/src/main/assets/airshipconfig.properties
+airshipconfig.properties
 # Xcode
 #
 build/

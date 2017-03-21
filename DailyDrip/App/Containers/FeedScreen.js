@@ -8,11 +8,17 @@ import Api from '../Services/DailyDripApi'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
+import ReactNativeUA from 'react-native-ua';
 
 export default class FeedScreen extends React.Component {
 
   constructor(props) {
     super(props);
+
+    ReactNativeUA.enable_notification(); // prompt user to enable notification
+
+    ReactNativeUA.enable_geolocation(); // prompt user to enable geolocation
+
     const dataObjects = [
       {title: 'First Title', description: 'First Description'},
       {title: 'Second Title', description: 'Second Description'},
@@ -54,6 +60,28 @@ export default class FeedScreen extends React.Component {
   }
 
   componentWillMount() {
+    // add handler to handle all incoming notifications
+    ReactNativeUA.on_notification((notification) => {
+        console.log('notification:',
+                    notification.url, // if action url is disabled
+                    notification.platform,
+                    notification.event,
+                    notification.alert,
+                    notification.data);
+
+        alert(notification.alert);
+    });
+
+    // Check if user enabled notifications
+    ReactNativeUA.are_notifications_enabled().then(enabled => {
+      console.log('notifications enabled:', enabled);
+    })
+
+    // Get channel id for device
+    ReactNativeUA.get_channel_id().then(channelId => {
+      console.log('channel id:', channelId);
+    })
+
     // pass the topic id here
     Api.getDrips('10').then((response)=>{
       // Datasource is always in state

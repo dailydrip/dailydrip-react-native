@@ -3,6 +3,7 @@ package com.dailydrip;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.globo.reactnativeua.ReactNativeUAPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.i18n.reactnativei18n.ReactNativeI18n;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeUAPackage(),
             new ReactVideoPackage(),
             new ReactNativeI18n(),
             new VectorIconsPackage(),
