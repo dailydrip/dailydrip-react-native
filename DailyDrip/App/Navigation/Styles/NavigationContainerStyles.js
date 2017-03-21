@@ -5,7 +5,7 @@ export default {
     flex: 1
   },
   navBar: {
-    backgroundColor: 'blue'
+    backgroundColor: Colors.background
   },
   title: {
     color: Colors.snow

@@ -13,12 +13,19 @@ var height = Dimensions.get('window').height - 100
 
 export default class ContentScreen extends React.Component {
 
+  renderVideo = (url) => {
+    return <Text>Video URL: {url}</Text>
+  }
+
   render () {
     const {title, teaser, description_html } = this.props.drip
+    let videoUrl = this.props.drip.video.url
+    let video = videoUrl  ? this.renderVideo(this.props.drip.video.url) : null
     // const { description, title } = this.props
     return (
       <ScrollView style={styles.container}>
         <Text>{title}</Text>
+        {video}
         <WebViewDailyDrip html={description_html} />
       </ScrollView>
     )
