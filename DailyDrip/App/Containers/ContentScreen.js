@@ -3,6 +3,7 @@ import { ScrollView, Dimensions, Text, Image, View, ListView, Button, WebView } 
 import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
 import { Card, Text as TextElements } from 'react-native-elements'
 import { Images } from '../Themes'
+import WebViewDailyDrip from '../Components/WebViewDailyDrip'
 
 // Styles
 import styles from './Styles/ContentScreenStyles'
@@ -18,8 +19,7 @@ export default class ContentScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Text>{title}</Text>
-        <Text>{teaser}</Text>
-        <WebView source={{html: description_html}} style={{width: width, height: height}}/>
+        <WebViewDailyDrip html={description_html} />
       </ScrollView>
     )
   }
