@@ -1,8 +1,5 @@
 import React from 'react'
-import { ScrollView, Dimensions, Text, Image, View, ListView, Button, WebView } from 'react-native'
-
-var width = Dimensions.get('window').width
-var height = Dimensions.get('window').height - 100
+import { ScrollView, Text, Image, View, ListView, Button, WebView } from 'react-native'
 
 export default class WebViewDailyDrip extends React.Component {
 
@@ -37,7 +34,7 @@ export default class WebViewDailyDrip extends React.Component {
       `;
 
     return (
-      <WebView source={{html: finalHtml}} style={{width: width, height: height}}/>
+      <WebView source={{html: finalHtml}} style={{marginTop: this.props.marginTop, width: this.props.width, height: this.props.height}}/>
     )
   }
 }
